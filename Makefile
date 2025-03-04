@@ -780,7 +780,7 @@ apparmor-data.o: usr.bin.pulseaudio.eg config.h
 #  extract the PER_* personality enums
 #
 personality.h: config.h
-	gcc $(CFLAGS) core-personality.c | $(GREP) -e "PER_[A-Z0-9]* =.*," | cut -d "=" -f 1 \
+	g++ $(CFLAGS) core-personality.c | $(GREP) -e "PER_[A-Z0-9]* =.*," | cut -d "=" -f 1 \
 	| sed "s/.$$/,/" > personality.h
 	echo "MK personality.h"
 
@@ -791,7 +791,7 @@ stress-personality.c: personality.h
 #  so we can check if these enums exist
 #
 io-uring.h: config.h
-	gcc $(CFLAGS) core-io-uring.c  | $(GREP) IORING_OP | sed 's/,//' | \
+	g++ $(CFLAGS) core-io-uring.c  | $(GREP) IORING_OP | sed 's/,//' | \
 	sed 's/.*\(IORING_OP_.*\)/#define HAVE_\1/' > io-uring.h
 	echo "MK io-uring.h"
 
