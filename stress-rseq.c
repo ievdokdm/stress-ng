@@ -255,13 +255,13 @@ static int stress_rseq(stress_args_t *args)
 stressor_info_t stress_rseq_info = {
 	.stressor = stress_rseq,
 	.supported = stress_rseq_supported,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.help = help
 };
 #else
 stressor_info_t stress_rseq_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.help = help,
 	.unimplemented_reason = "built without Linux restartable sequences support"
 };

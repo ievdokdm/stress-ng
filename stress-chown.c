@@ -268,7 +268,7 @@ tidy:
 
 stressor_info_t stress_chown_info = {
 	.stressor = stress_chown,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };

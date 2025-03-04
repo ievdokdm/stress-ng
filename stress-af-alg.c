@@ -1139,7 +1139,7 @@ stressor_info_t stress_af_alg_info = {
 	.stressor = stress_af_alg,
 	.init = stress_af_alg_init,
 	.deinit = stress_af_alg_deinit,
-	.class = CLASS_CPU | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -1148,7 +1148,7 @@ stressor_info_t stress_af_alg_info = {
 #else
 stressor_info_t stress_af_alg_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

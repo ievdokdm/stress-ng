@@ -176,7 +176,7 @@ static int stress_env(stress_args_t *args)
 
 stressor_info_t stress_env_info = {
 	.stressor = stress_env,
-	.class = CLASS_OS | CLASS_VM,
+	.stress_class = CLASS_OS | CLASS_VM,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
 };

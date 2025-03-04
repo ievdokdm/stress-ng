@@ -321,7 +321,7 @@ static int stress_fallocate(stress_args_t *args)
 
 stressor_info_t stress_fallocate_info = {
 	.stressor = stress_fallocate,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
@@ -329,7 +329,7 @@ stressor_info_t stress_fallocate_info = {
 #else
 stressor_info_t stress_fallocate_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,

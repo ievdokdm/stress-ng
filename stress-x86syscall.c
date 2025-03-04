@@ -528,7 +528,7 @@ static int stress_x86syscall(stress_args_t *args)
 
 stressor_info_t stress_x86syscall_info = {
 	.stressor = stress_x86syscall,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.supported = stress_x86syscall_supported,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
@@ -537,7 +537,7 @@ stressor_info_t stress_x86syscall_info = {
 #else
 stressor_info_t stress_x86syscall_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.verify = VERIFY_ALWAYS,

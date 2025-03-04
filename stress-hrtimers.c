@@ -259,7 +259,7 @@ reap:
 
 stressor_info_t stress_hrtimers_info = {
 	.stressor = stress_hrtimers,
-	.class = CLASS_SCHEDULER,
+	.stress_class = CLASS_SCHEDULER,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -267,7 +267,7 @@ stressor_info_t stress_hrtimers_info = {
 #else
 stressor_info_t stress_hrtimers_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_SCHEDULER,
+	.stress_class = CLASS_SCHEDULER,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

@@ -220,13 +220,13 @@ static int stress_membarrier(stress_args_t *args)
 
 stressor_info_t stress_membarrier_info = {
 	.stressor = stress_membarrier,
-	.class = CLASS_CPU_CACHE | CLASS_MEMORY,
+	.stress_class = CLASS_CPU_CACHE | CLASS_MEMORY,
 	.help = help
 };
 #else
 stressor_info_t stress_membarrier_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU_CACHE | CLASS_MEMORY,
+	.stress_class = CLASS_CPU_CACHE | CLASS_MEMORY,
 	.help = help,
 	.unimplemented_reason = "built without pthread support or membarrier() system call"
 };

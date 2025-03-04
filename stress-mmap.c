@@ -1139,7 +1139,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_mmap_info = {
 	.stressor = stress_mmap,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

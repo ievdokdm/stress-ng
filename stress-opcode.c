@@ -643,7 +643,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 stressor_info_t stress_opcode_info = {
 	.stressor = stress_opcode,
 	.set_default = stress_opcode_set_default,
-	.class = CLASS_CPU | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };
@@ -665,7 +665,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_opcode_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.unimplemented_reason = "built without linux/seccomp.h, linux/audit.h, linux/filter.h, sys/prctl.h or mprotect()"

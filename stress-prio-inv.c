@@ -518,7 +518,7 @@ unmap_prio_inv_info:
 
 stressor_info_t stress_prio_inv_info = {
 	.stressor = stress_prio_inv,
-	.class = CLASS_OS | CLASS_SCHEDULER,
+	.stress_class = CLASS_OS | CLASS_SCHEDULER,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -526,7 +526,7 @@ stressor_info_t stress_prio_inv_info = {
 #else
 stressor_info_t stress_prio_inv_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS | CLASS_SCHEDULER,
+	.stress_class = CLASS_OS | CLASS_SCHEDULER,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

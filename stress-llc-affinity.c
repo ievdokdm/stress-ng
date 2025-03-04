@@ -264,7 +264,7 @@ static int stress_llc_affinity(stress_args_t *args)
 
 stressor_info_t stress_llc_affinity_info = {
 	.stressor = stress_llc_affinity,
-	.class = CLASS_CPU_CACHE,
+	.stress_class = CLASS_CPU_CACHE,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -274,7 +274,7 @@ stressor_info_t stress_llc_affinity_info = {
 
 stressor_info_t stress_llc_affinity_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU_CACHE,
+	.stress_class = CLASS_CPU_CACHE,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

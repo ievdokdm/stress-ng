@@ -470,14 +470,14 @@ tidy:
 stressor_info_t stress_quota_info = {
 	.stressor = stress_quota,
 	.supported = stress_quota_supported,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_quota_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without sys/quota.h or only supported on Linux"

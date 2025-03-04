@@ -916,7 +916,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 stressor_info_t stress_cyclic_info = {
 	.stressor = stress_cyclic,
 	.supported = stress_cyclic_supported,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };

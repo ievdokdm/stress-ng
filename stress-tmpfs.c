@@ -441,7 +441,7 @@ static int stress_tmpfs(stress_args_t *args)
 }
 stressor_info_t stress_tmpfs_info = {
 	.stressor = stress_tmpfs,
-	.class = CLASS_MEMORY | CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_MEMORY | CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
@@ -449,7 +449,7 @@ stressor_info_t stress_tmpfs_info = {
 #else
 stressor_info_t stress_tmpfs_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_MEMORY | CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_MEMORY | CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,

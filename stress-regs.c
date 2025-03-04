@@ -1065,7 +1065,7 @@ static int stress_regs(stress_args_t *args)
 stressor_info_t stress_regs_info = {
 	.stressor = stress_regs,
 	.verify = VERIFY_ALWAYS,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.help = help
 };
 
@@ -1074,7 +1074,7 @@ stressor_info_t stress_regs_info = {
 stressor_info_t stress_regs_info = {
 	.stressor = stress_unimplemented,
 	.verify = VERIFY_ALWAYS,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.help = help,
 	.unimplemented_reason = "built without gcc 8 or higher supporting asm register assignments"
 };

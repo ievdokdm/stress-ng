@@ -436,7 +436,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_qsort_info = {
 	.stressor = stress_qsort,
-	.class = CLASS_CPU_CACHE | CLASS_CPU | CLASS_MEMORY,
+	.stress_class = CLASS_CPU_CACHE | CLASS_CPU | CLASS_MEMORY,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

@@ -108,14 +108,14 @@ static int stress_personality(stress_args_t *args)
 
 stressor_info_t stress_personality_info = {
 	.stressor = stress_personality,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_personality_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without sys/personality.h or personality() system call"

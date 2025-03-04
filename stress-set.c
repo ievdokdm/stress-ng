@@ -549,7 +549,7 @@ static int stress_set(stress_args_t *args)
 
 stressor_info_t stress_set_info = {
 	.stressor = stress_set,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };

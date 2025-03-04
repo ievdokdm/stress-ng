@@ -325,7 +325,7 @@ PRAGMA_UNROLL_N(4)
 stressor_info_t stress_remap_info = {
 	.stressor = stress_remap,
 	.opt_set_funcs = opt_set_funcs,
-	.class = CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
@@ -333,7 +333,7 @@ stressor_info_t stress_remap_info = {
 stressor_info_t stress_remap_info = {
 	.stressor = stress_unimplemented,
 	.opt_set_funcs = opt_set_funcs,
-	.class = CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without remap_file_pages() or unsupported for SPARC Linux"

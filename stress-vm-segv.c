@@ -165,7 +165,7 @@ finish:
 
 stressor_info_t stress_vm_segv_info = {
 	.stressor = stress_vm_segv,
-	.class = CLASS_VM | CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };

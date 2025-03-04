@@ -319,7 +319,7 @@ stressor_info_t stress_physpage_info = {
 	.stressor = stress_physpage,
 	.supported = stress_physpage_supported,
 	.opt_set_funcs = opt_set_funcs,
-	.class = CLASS_VM,
+	.stress_class = CLASS_VM,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
@@ -327,7 +327,7 @@ stressor_info_t stress_physpage_info = {
 stressor_info_t stress_physpage_info = {
 	.stressor = stress_unimplemented,
 	.opt_set_funcs = opt_set_funcs,
-	.class = CLASS_VM,
+	.stress_class = CLASS_VM,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "only supported on Linux"

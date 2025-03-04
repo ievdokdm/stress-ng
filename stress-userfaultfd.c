@@ -504,7 +504,7 @@ static int stress_userfaultfd(stress_args_t *args)
 
 stressor_info_t stress_userfaultfd_info = {
 	.stressor = stress_userfaultfd,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.supported = stress_userfaultfd_supported,
 	.verify = VERIFY_ALWAYS,
@@ -513,7 +513,7 @@ stressor_info_t stress_userfaultfd_info = {
 #else
 stressor_info_t stress_userfaultfd_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

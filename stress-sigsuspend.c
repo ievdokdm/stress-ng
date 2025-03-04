@@ -134,7 +134,7 @@ reap:
 
 stressor_info_t stress_sigsuspend_info = {
 	.stressor = stress_sigsuspend,
-	.class = CLASS_SIGNAL | CLASS_OS,
+	.stress_class = CLASS_SIGNAL | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };

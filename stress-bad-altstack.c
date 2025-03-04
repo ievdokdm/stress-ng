@@ -439,14 +439,14 @@ finish:
 
 stressor_info_t stress_bad_altstack_info = {
 	.stressor = stress_bad_altstack,
-	.class = CLASS_VM | CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_bad_altstack_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without sigaltstack()"

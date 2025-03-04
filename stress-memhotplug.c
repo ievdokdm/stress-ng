@@ -365,7 +365,7 @@ finish:
 
 stressor_info_t stress_memhotplug_info = {
 	.stressor = stress_memhotplug,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.supported = stress_memhotplug_supported,
 	.help = help
@@ -373,7 +373,7 @@ stressor_info_t stress_memhotplug_info = {
 #else
 stressor_info_t stress_memhotplug_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.unimplemented_reason = "only supported on Linux"

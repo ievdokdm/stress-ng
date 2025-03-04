@@ -512,7 +512,7 @@ finish:
 
 stressor_info_t stress_cgroup_info = {
 	.stressor = stress_cgroup_mount,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.supported = stress_cgroup_supported,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -520,7 +520,7 @@ stressor_info_t stress_cgroup_info = {
 #else
 stressor_info_t stress_cgroup_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.supported = stress_cgroup_supported,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

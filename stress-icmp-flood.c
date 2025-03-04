@@ -176,14 +176,14 @@ err:
 stressor_info_t stress_icmp_flood_info = {
 	.stressor = stress_icmp_flood,
 	.supported = stress_icmp_flood_supported,
-	.class = CLASS_OS | CLASS_NETWORK,
+	.stress_class = CLASS_OS | CLASS_NETWORK,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_icmp_flood_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS | CLASS_NETWORK,
+	.stress_class = CLASS_OS | CLASS_NETWORK,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without netinet/ip.h, netinet/ip_icmp.h or struct icmphdr support"

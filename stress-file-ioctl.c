@@ -574,7 +574,7 @@ tidy:
 
 stressor_info_t stress_file_ioctl_info = {
 	.stressor = stress_file_ioctl,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };

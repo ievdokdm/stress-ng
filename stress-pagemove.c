@@ -265,7 +265,7 @@ static int stress_pagemove(stress_args_t *args)
 
 stressor_info_t stress_pagemove_info = {
 	.stressor = stress_pagemove,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -273,7 +273,7 @@ stressor_info_t stress_pagemove_info = {
 #else
 stressor_info_t stress_pagemove_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

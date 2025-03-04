@@ -574,7 +574,7 @@ finish:
 
 stressor_info_t stress_priv_instr_info = {
 	.stressor = stress_priv_instr,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
@@ -583,7 +583,7 @@ stressor_info_t stress_priv_instr_info = {
 
 stressor_info_t stress_priv_instr_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "no privileged op-code test for this architecture"

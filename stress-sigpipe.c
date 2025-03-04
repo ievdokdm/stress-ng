@@ -197,7 +197,7 @@ static int stress_sigpipe(stress_args_t *args)
 
 stressor_info_t stress_sigpipe_info = {
 	.stressor = stress_sigpipe,
-	.class = CLASS_SIGNAL | CLASS_OS,
+	.stress_class = CLASS_SIGNAL | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };

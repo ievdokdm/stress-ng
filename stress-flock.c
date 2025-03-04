@@ -347,14 +347,14 @@ err:
 
 stressor_info_t stress_flock_info = {
 	.stressor = stress_flock,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_flock_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without flock() or LOCK_EX/LOCK_UN support"

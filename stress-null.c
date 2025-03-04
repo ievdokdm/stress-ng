@@ -204,7 +204,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_null_info = {
 	.stressor = stress_null,
-	.class = CLASS_DEV | CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_DEV | CLASS_MEMORY | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help

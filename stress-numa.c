@@ -824,7 +824,7 @@ numa_free:
 
 stressor_info_t stress_numa_info = {
 	.stressor = stress_numa,
-	.class = CLASS_CPU | CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
@@ -832,7 +832,7 @@ stressor_info_t stress_numa_info = {
 #else
 stressor_info_t stress_numa_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU | CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,

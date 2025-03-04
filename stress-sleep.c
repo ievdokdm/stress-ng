@@ -417,7 +417,7 @@ tidy:
 
 stressor_info_t stress_sleep_info = {
 	.stressor = stress_sleep,
-	.class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -425,7 +425,7 @@ stressor_info_t stress_sleep_info = {
 #else
 stressor_info_t stress_sleep_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

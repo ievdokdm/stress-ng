@@ -350,7 +350,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_bigheap_info = {
 	.stressor = stress_bigheap,
-	.class = CLASS_OS | CLASS_VM,
+	.stress_class = CLASS_OS | CLASS_VM,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

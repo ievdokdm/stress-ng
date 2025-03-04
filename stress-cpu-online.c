@@ -423,7 +423,7 @@ static int stress_cpu_online(stress_args_t *args)
 stressor_info_t stress_cpu_online_info = {
 	.stressor = stress_cpu_online,
 	.supported = stress_cpu_online_supported,
-	.class = CLASS_CPU | CLASS_OS | CLASS_PATHOLOGICAL,
+	.stress_class = CLASS_CPU | CLASS_OS | CLASS_PATHOLOGICAL,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -431,7 +431,7 @@ stressor_info_t stress_cpu_online_info = {
 #else
 stressor_info_t stress_cpu_online_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU | CLASS_OS | CLASS_PATHOLOGICAL,
+	.stress_class = CLASS_CPU | CLASS_OS | CLASS_PATHOLOGICAL,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

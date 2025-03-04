@@ -327,7 +327,7 @@ static int stress_ioport(stress_args_t *args)
 stressor_info_t stress_ioport_info = {
 	.stressor = stress_ioport,
 	.supported = stress_ioport_supported,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -335,7 +335,7 @@ stressor_info_t stress_ioport_info = {
 #else
 stressor_info_t stress_ioport_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.verify = VERIFY_ALWAYS,

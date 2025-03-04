@@ -4162,13 +4162,13 @@ deinit:
 }
 stressor_info_t stress_enosys_info = {
 	.stressor = stress_enosys,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.help = help
 };
 #else
 stressor_info_t stress_enosys_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.help = help,
 	.unimplemented_reason = "built without sys/syscall.h or syscall support"
 };

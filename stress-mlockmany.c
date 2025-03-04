@@ -260,7 +260,7 @@ unmap:
 
 stressor_info_t stress_mlockmany_info = {
 	.stressor = stress_mlockmany,
-	.class = CLASS_VM | CLASS_OS | CLASS_PATHOLOGICAL,
+	.stress_class = CLASS_VM | CLASS_OS | CLASS_PATHOLOGICAL,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };
@@ -269,7 +269,7 @@ stressor_info_t stress_mlockmany_info = {
 
 stressor_info_t stress_mlockmany_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS | CLASS_PATHOLOGICAL,
+	.stress_class = CLASS_VM | CLASS_OS | CLASS_PATHOLOGICAL,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.unimplemented_reason = "built without mlock() support"

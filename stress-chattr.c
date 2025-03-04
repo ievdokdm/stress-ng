@@ -362,7 +362,7 @@ static int stress_chattr(stress_args_t *args)
 
 stressor_info_t stress_chattr_info = {
 	.stressor = stress_chattr,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
@@ -371,7 +371,7 @@ stressor_info_t stress_chattr_info = {
 
 stressor_info_t stress_chattr_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without Linux chattr() support"

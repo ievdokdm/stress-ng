@@ -315,7 +315,7 @@ tidy_fds:
 
 stressor_info_t stress_fd_fork_info = {
 	.stressor = stress_fd_fork,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help

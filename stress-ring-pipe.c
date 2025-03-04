@@ -310,7 +310,7 @@ err_ret:
 
 stressor_info_t stress_ring_pipe_info = {
 	.stressor = stress_ring_pipe,
-	.class = CLASS_PIPE_IO | CLASS_OS,
+	.stress_class = CLASS_PIPE_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_NONE,
 	.help = help
@@ -320,7 +320,7 @@ stressor_info_t stress_ring_pipe_info = {
 
 stressor_info_t stress_ring_pipe_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_PIPE_IO | CLASS_OS,
+	.stress_class = CLASS_PIPE_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_NONE,
 	.help = help,

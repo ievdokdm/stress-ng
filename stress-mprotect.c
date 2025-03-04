@@ -240,14 +240,14 @@ static int stress_mprotect(stress_args_t *args)
 
 stressor_info_t stress_mprotect_info = {
 	.stressor = stress_mprotect,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_mprotect_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without mprotect() system call"

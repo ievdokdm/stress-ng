@@ -131,7 +131,7 @@ abort:
 
 stressor_info_t stress_factor_info = {
 	.stressor = stress_factor,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
@@ -141,7 +141,7 @@ stressor_info_t stress_factor_info = {
 
 stressor_info_t stress_factor_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

@@ -401,7 +401,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_tun_info = {
 	.stressor = stress_tun,
-	.class = CLASS_NETWORK | CLASS_OS,
+	.stress_class = CLASS_NETWORK | CLASS_OS,
 	.supported = stress_tun_supported,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
@@ -410,7 +410,7 @@ stressor_info_t stress_tun_info = {
 #else
 stressor_info_t stress_tun_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_NETWORK | CLASS_OS,
+	.stress_class = CLASS_NETWORK | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without linux/if_tun.h and various undefined TUN related macros"

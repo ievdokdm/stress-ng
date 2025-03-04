@@ -758,7 +758,7 @@ static int stress_get(stress_args_t *args)
 
 stressor_info_t stress_get_info = {
 	.stressor = stress_get,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
 };

@@ -477,14 +477,14 @@ static int stress_swap(stress_args_t *args)
 stressor_info_t stress_swap_info = {
 	.stressor = stress_swap,
 	.supported = stress_swap_supported,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_swap_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without sys/swap.h or swap() system call"

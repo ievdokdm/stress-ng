@@ -521,7 +521,7 @@ static int stress_rawdev(stress_args_t *args)
 stressor_info_t stress_rawdev_info = {
 	.stressor = stress_rawdev,
 	.supported = stress_rawdev_supported,
-	.class = CLASS_IO,
+	.stress_class = CLASS_IO,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -529,7 +529,7 @@ stressor_info_t stress_rawdev_info = {
 #else
 stressor_info_t stress_rawdev_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_IO,
+	.stress_class = CLASS_IO,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

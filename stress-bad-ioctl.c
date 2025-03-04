@@ -607,14 +607,14 @@ again:
 stressor_info_t stress_bad_ioctl_info = {
 	.stressor = stress_bad_ioctl,
 	.supported = stress_bad_ioctl_supported,
-	.class = CLASS_DEV | CLASS_OS | CLASS_PATHOLOGICAL,
+	.stress_class = CLASS_DEV | CLASS_OS | CLASS_PATHOLOGICAL,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };
 #else
 stressor_info_t stress_bad_ioctl_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_DEV | CLASS_OS | CLASS_PATHOLOGICAL,
+	.stress_class = CLASS_DEV | CLASS_OS | CLASS_PATHOLOGICAL,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.unimplemented_reason = "built without pthread and/or ioctl() _IOR macro or is not Linux"

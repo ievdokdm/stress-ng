@@ -512,14 +512,14 @@ static int stress_mlock(stress_args_t *args)
 
 stressor_info_t stress_mlock_info = {
 	.stressor = stress_mlock,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_mlock_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without mlock() support or _POSIX_MEMLOCK_RANGE defined"

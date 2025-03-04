@@ -185,14 +185,14 @@ static int stress_cap(stress_args_t *args)
 
 stressor_info_t stress_cap_info = {
 	.stressor = stress_cap,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_cap_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.help = help,
 	.verify = VERIFY_ALWAYS,
 	.unimplemented_reason = "built without sys/capability.h"

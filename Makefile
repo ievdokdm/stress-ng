@@ -55,7 +55,7 @@ endif
 #
 # Check if compiler supports flag set in $(flag)
 #
-cc_supports_flag = $(shell $(CC) -Werror $(flag) -E -xc /dev/null > /dev/null 2>&1 && echo $(flag))
+cc_supports_flag = $(shell gcc -Werror $(flag) -E -xc /dev/null > /dev/null 2>&1 && echo $(flag))
 
 #
 # Pedantic flags
@@ -87,7 +87,7 @@ endif
 #
 # Optimization flags
 #
-ifeq ($(findstring icc,$(CC)),)
+ifeq ($(findstring icc,gcc),)
 override CFLAGS += $(foreach flag,-fipa-pta,$(cc_supports_flag))
 endif
 #
@@ -117,32 +117,15 @@ ifeq ($(UNEXPECTED),1)
 override CFLAGS += -DCHECK_UNEXPECTED
 endif
 
-#
-# Disable any user defined PREFV setting
-#
-ifneq ($(PRE_V),)
-override undefine PRE_V
-endif
-#
-# Verbosity prefixes
-#
-ifeq ($(VERBOSE),)
-PRE_V=@
-PRE_Q=@
-else
-PRE_V=
-PRE_Q=@#
-endif
-
 ifneq ($(PRESERVE_CFLAGS),1)
-ifeq ($(findstring icc,$(CC)),icc)
+ifeq ($(findstring icc,gcc),icc)
 override CFLAGS += -no-inline-max-size -no-inline-max-total-size
 override CFLAGS += -axAVX,CORE-AVX2,CORE-AVX-I,CORE-AVX512,SSE2,SSE3,SSSE3,SSE4.1,SSE4.2,SANDYBRIDGE,SKYLAKE,SKYLAKE-AVX512,TIGERLAKE,SAPPHIRERAPIDS
 override CFLAGS += -ip -falign-loops -funroll-loops -ansi-alias -fma -qoverride-limits
 endif
 endif
 
-#ifeq ($(findstring clang,$(CC)),clang)
+#ifeq ($(findstring clang,gcc),clang)
 #override CFLAGS += -Weverything
 #endif
 
@@ -662,35 +645,29 @@ all: config.h stress-ng
 .o: Makefile
 
 %.o: %.c $(HEADERS) $(HEADERS_GEN)
-	$(PRE_Q)echo "CC $<"
-	$(PRE_V)$(CC) $(CFLAGS) -c -o $@ $<
+	gcc $(CFLAGS) -c -o $@ $<
 
 stress-vnni.o: stress-vnni.c $(HEADERS) $(HEADERS_GEN)
-	$(PRE_Q)echo "CC $<"
-	$(PRE_V)$(CC) $(VNNI_CFLAGS) -c -o $@ $<
+	gcc $(VNNI_CFLAGS) -c -o $@ $<
 
 #
 #  Use CC for linking if eigen is not being used, otherwise use CXX
 #
 stress-ng: config.h $(OBJS)
-	$(PRE_Q)echo "LD $@"
-	$(eval LINK_TOOL := $(shell if [ -n "$(shell grep '^#define HAVE_EIGEN' config.h)" ]; then echo $(CXX); else echo $(CC); fi))
+	$(eval LINK_TOOL := $(shell if [ -n "$(shell grep '^#define HAVE_EIGEN' config.h)" ]; then echo g++; else echo gcc; fi))
 	$(eval LDFLAGS_EXTRA := $(shell grep CONFIG_LDFLAGS config | sed 's/CONFIG_LDFLAGS +=//' | tr '\n' ' '))
-	$(PRE_V)$(LINK_TOOL) $(OBJS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA) $(CFLAGS) -o $@
+	$(LINK_TOOL) $(OBJS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA) $(CFLAGS) -o $@
 
 stress-eigen-ops.o: config.h
 	@if grep -q '^#define HAVE_EIGEN' config.h; then \
-		echo "CXX stress-eigen-ops.cpp";	\
-		$(CXX) -c -o stress-eigen-ops.o stress-eigen-ops.cpp; \
+		g++ -c -o stress-eigen-ops.o stress-eigen-ops.cpp; \
 	else \
-		echo "CC stress-eigen-ops.c";	\
-		$(CC) -c -o stress-eigen-ops.o stress-eigen-ops.c; \
+		gcc -c -o stress-eigen-ops.o stress-eigen-ops.c; \
 	fi
 
 config.h config:
-	$(PRE_Q)echo "Generating config.."
-	$(MAKE) CC="$(CC)" CXX="$(CXX)" STATIC=$(STATIC) -f Makefile.config
-	$(PRE_Q)rm -f core-config.c
+	$(MAKE) CC="gcc" CXX="g++" STATIC=$(STATIC) -f Makefile.config
+	rm -f core-config.c
 
 makeconfig: config.h
 
@@ -699,33 +676,29 @@ makeconfig: config.h
 #  parser output
 #
 apparmor-data.o: usr.bin.pulseaudio.eg config.h
-	$(PRE_Q)rm -f apparmor-data.bin
-	$(PRE_V)if [ -n "$(shell grep '^#define HAVE_APPARMOR' config.h)" ]; then \
-		echo "Generating AppArmor profile from usr.bin.pulseaudio.eg"; \
+	rm -f apparmor-data.bin
+	if [ -n "$(shell grep '^#define HAVE_APPARMOR' config.h)" ]; then \
 		$(APPARMOR_PARSER) -Q usr.bin.pulseaudio.eg  -o apparmor-data.bin >/dev/null 2>&1 ; \
 	else \
-		echo "Generating empty AppArmor profile"; \
 		touch apparmor-data.bin; \
 	fi
-	$(PRE_V)echo "#include <stddef.h>" > apparmor-data.c
-	$(PRE_V)echo "char g_apparmor_data[]= { " >> apparmor-data.c
-	$(PRE_V)od -tx1 -An -v < apparmor-data.bin | \
+	echo "#include <stddef.h>" > apparmor-data.c
+	echo "char g_apparmor_data[]= { " >> apparmor-data.c
+	od -tx1 -An -v < apparmor-data.bin | \
 		sed 's/[0-9a-f][0-9a-f]/0x&,/g' | \
 		sed '$$ s/.$$//' >> apparmor-data.c
-	$(PRE_V)echo "};" >> apparmor-data.c
-	$(PRE_V)rm -f apparmor-data.bin
-	$(PRE_V)echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
-	$(PRE_Q)echo "CC apparmor-data.c"
-	$(PRE_V)$(CC) $(CFLAGS) -c apparmor-data.c -o apparmor-data.o
-	$(PRE_V)rm -f apparmor-data.c
+	echo "};" >> apparmor-data.c
+	rm -f apparmor-data.bin
+	echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
+	gcc $(CFLAGS) -c apparmor-data.c -o apparmor-data.o
+	rm -f apparmor-data.c
 
 #
 #  extract the PER_* personality enums
 #
 personality.h: config.h
-	$(PRE_V)$(CPP) $(CFLAGS) core-personality.c | $(GREP) -e "PER_[A-Z0-9]* =.*," | cut -d "=" -f 1 \
+	g++ $(CFLAGS) core-personality.c | $(GREP) -e "PER_[A-Z0-9]* =.*," | cut -d "=" -f 1 \
 	| sed "s/.$$/,/" > personality.h
-	$(PRE_Q)echo "MK personality.h"
 
 stress-personality.c: personality.h
 
@@ -734,33 +707,30 @@ stress-personality.c: personality.h
 #  so we can check if these enums exist
 #
 io-uring.h: config.h
-	$(PRE_V)$(CPP) $(CFLAGS) core-io-uring.c  | $(GREP) IORING_OP | sed 's/,//' | \
+	g++ $(CFLAGS) core-io-uring.c  | $(GREP) IORING_OP | sed 's/,//' | \
 	sed 's/.*\(IORING_OP_.*\)/#define HAVE_\1/' > io-uring.h
-	$(PRE_Q)echo "MK io-uring.h"
 
 stress-io-uring.c: io-uring.h
 
 core-perf.o: core-perf.c core-perf-event.c config.h
-	$(PRE_V)$(CC) $(CFLAGS) -E core-perf-event.c | $(GREP) "PERF_COUNT" | \
+	gcc $(CFLAGS) -E core-perf-event.c | $(GREP) "PERF_COUNT" | \
 	sed 's/,/ /' | sed s/'^ *//' | \
 	awk {'print "#define STRESS_" $$1 " (1)"'} > core-perf-event.h
-	$(PRE_Q)echo CC $<
-	$(PRE_V)$(CC) $(CFLAGS) -c -o $@ $<
+	gcc $(CFLAGS) -c -o $@ $<
 
 core-config.c: config.h
-	$(PRE_V)echo "const char stress_config[] = " > core-config.c
-	$(PRE_V)sed 's/.*/"&\\n"/' config.h >> core-config.c
-	$(PRE_V)echo ";" >> core-config.c
+	echo "const char stress_config[] = " > core-config.c
+	sed 's/.*/"&\\n"/' config.h >> core-config.c
+	echo ";" >> core-config.c
 
 stress-vecmath.o: stress-vecmath.c config.h
-	$(PRE_Q)echo CC $<
-	$(PRE_V)$(CC) $(CFLAGS) -fno-builtin -c -o $@ $<
+	gcc $(CFLAGS) -fno-builtin -c -o $@ $<
 
 #
 #  define STRESS_GIT_COMMIT_ID
 #
 git-commit-id.h:
-	$(PRE_Q)echo "MK $@"
+	echo "MK $@"
 	@if [ -e .git/HEAD -a -e .git/index ]; then \
 		echo "#define STRESS_GIT_COMMIT_ID \"$(shell git rev-parse HEAD)\"" > $@ ; \
 	else \
@@ -770,7 +740,7 @@ git-commit-id.h:
 $(OBJS): stress-ng.h Makefile Makefile.config
 
 stress-ng.1.gz: stress-ng.1
-	$(PRE_V)gzip -n -c $< > $@
+	gzip -n -c $< > $@
 
 .PHONY: dist
 dist:
@@ -792,24 +762,24 @@ pdf:
 
 .PHONY: cleanconfig
 cleanconfig:
-	$(PRE_V)rm -f config config.h core-config.c
-	$(PRE_V)rm -rf configs
+	rm -f config config.h core-config.c
+	rm -rf configs
 
 .PHONY: cleanobj
 cleanobj:
-	$(PRE_V)rm -f core-config.c
-	$(PRE_V)rm -f io-uring.h
-	$(PRE_V)rm -f git-commit-id.h
-	$(PRE_V)rm -f core-perf-event.h
-	$(PRE_V)rm -f personality.h
-	$(PRE_V)rm -f apparmor-data.bin
-	$(PRE_V)rm -f *.o
+	rm -f core-config.c
+	rm -f io-uring.h
+	rm -f git-commit-id.h
+	rm -f core-perf-event.h
+	rm -f personality.h
+	rm -f apparmor-data.bin
+	rm -f *.o
 
 .PHONY: clean
 clean: cleanconfig cleanobj
-	$(PRE_V)rm -f stress-ng $(OBJS) stress-ng.1.gz stress-ng.pdf
-	$(PRE_V)rm -f stress-ng-$(VERSION).tar.xz
-	$(PRE_V)rm -f tags
+	rm -f stress-ng $(OBJS) stress-ng.1.gz stress-ng.pdf
+	rm -f stress-ng-$(VERSION).tar.xz
+	rm -f tags
 
 .PHONY: fast-test-all
 fast-test-all: all

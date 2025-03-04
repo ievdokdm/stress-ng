@@ -327,14 +327,14 @@ static int stress_sockdiag(stress_args_t *args)
 
 stressor_info_t stress_sockdiag_info = {
 	.stressor = stress_sockdiag,
-	.class = CLASS_NETWORK | CLASS_OS,
+	.stress_class = CLASS_NETWORK | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_sockdiag_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_NETWORK | CLASS_OS,
+	.stress_class = CLASS_NETWORK | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without linux/sock_diag.h, linux/netlink.h, linux/rtnetlink.h or linux/unix_diag.h"

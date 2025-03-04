@@ -4368,14 +4368,14 @@ deinit:
 }
 stressor_info_t stress_dev_info = {
 	.stressor = stress_dev,
-	.class = CLASS_DEV | CLASS_OS,
+	.stress_class = CLASS_DEV | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };
 #else
 stressor_info_t stress_dev_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_DEV | CLASS_OS,
+	.stress_class = CLASS_DEV | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.unimplemented_reason = "built without pthread support or poll.h"

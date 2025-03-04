@@ -791,7 +791,7 @@ free_memory:
 
 stressor_info_t stress_aiol_info = {
 	.stressor = stress_aiol,
-	.class = CLASS_IO | CLASS_INTERRUPT | CLASS_OS,
+	.stress_class = CLASS_IO | CLASS_INTERRUPT | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -799,7 +799,7 @@ stressor_info_t stress_aiol_info = {
 #else
 stressor_info_t stress_aiol_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_IO | CLASS_INTERRUPT | CLASS_OS,
+	.stress_class = CLASS_IO | CLASS_INTERRUPT | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.verify = VERIFY_ALWAYS,

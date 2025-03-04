@@ -2591,6 +2591,6 @@ cleanup:
 
 stressor_info_t stress_sysbadaddr_info = {
 	.stressor = stress_sysbadaddr,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.help = help
 };

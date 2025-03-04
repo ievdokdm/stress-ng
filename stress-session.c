@@ -239,7 +239,7 @@ static int stress_session(stress_args_t *args)
 
 stressor_info_t stress_session_info = {
 	.stressor = stress_session,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = session_help
 };

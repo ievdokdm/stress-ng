@@ -498,7 +498,7 @@ static int stress_jpeg(stress_args_t *args)
 
 stressor_info_t stress_jpeg_info = {
 	.stressor = stress_jpeg,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
@@ -506,7 +506,7 @@ stressor_info_t stress_jpeg_info = {
 #else
 stressor_info_t stress_jpeg_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,

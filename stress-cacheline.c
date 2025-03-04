@@ -774,7 +774,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_cacheline_info = {
 	.stressor = stress_cacheline,
-	.class = CLASS_CPU_CACHE,
+	.stress_class = CLASS_CPU_CACHE,
 	.verify = VERIFY_ALWAYS,
 	.opt_set_funcs = opt_set_funcs,
 	.init = stress_cacheline_init,

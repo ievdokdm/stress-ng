@@ -454,7 +454,7 @@ L0x000:
 
 stressor_info_t stress_goto_info = {
 	.stressor = stress_goto,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -462,7 +462,7 @@ stressor_info_t stress_goto_info = {
 #else
 stressor_info_t stress_goto_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

@@ -460,7 +460,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_revio_info = {
 	.stressor = stress_revio,
-	.class = CLASS_IO | CLASS_OS,
+	.stress_class = CLASS_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help

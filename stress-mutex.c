@@ -275,7 +275,7 @@ static int stress_mutex(stress_args_t *args)
 
 stressor_info_t stress_mutex_info = {
 	.stressor = stress_mutex,
-	.class = CLASS_OS | CLASS_SCHEDULER,
+	.stress_class = CLASS_OS | CLASS_SCHEDULER,
 	.verify = VERIFY_ALWAYS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
@@ -283,7 +283,7 @@ stressor_info_t stress_mutex_info = {
 #else
 stressor_info_t stress_mutex_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS | CLASS_SCHEDULER,
+	.stress_class = CLASS_OS | CLASS_SCHEDULER,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

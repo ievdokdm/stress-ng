@@ -301,7 +301,7 @@ static int stress_affinity(stress_args_t *args)
 
 stressor_info_t stress_affinity_info = {
 	.stressor = stress_affinity,
-	.class = CLASS_SCHEDULER,
+	.stress_class = CLASS_SCHEDULER,
 	.supported = stress_affinity_supported,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
@@ -310,7 +310,7 @@ stressor_info_t stress_affinity_info = {
 #else
 stressor_info_t stress_affinity_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_SCHEDULER,
+	.stress_class = CLASS_SCHEDULER,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,

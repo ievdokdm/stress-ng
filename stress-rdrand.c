@@ -386,7 +386,7 @@ stressor_info_t stress_rdrand_info = {
 	.stressor = stress_rdrand,
 	.supported = stress_rdrand_supported,
 	.opt_set_funcs = opt_set_funcs,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
@@ -403,7 +403,7 @@ stressor_info_t stress_rdrand_info = {
 	.stressor = stress_unimplemented,
 	.supported = stress_rdrand_supported,
 	.opt_set_funcs = opt_set_funcs,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "x86 CPU only, built without rdrand or rdseed opcode support"

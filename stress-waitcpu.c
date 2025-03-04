@@ -376,7 +376,7 @@ static int stress_waitcpu(stress_args_t *args)
 
 stressor_info_t stress_waitcpu_info = {
 	.stressor = stress_waitcpu,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };

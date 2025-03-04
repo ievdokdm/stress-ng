@@ -178,14 +178,14 @@ static int stress_getrandom(stress_args_t *args)
 stressor_info_t stress_getrandom_info = {
 	.stressor = stress_getrandom,
 	.supported = stress_getrandom_supported,
-	.class = CLASS_OS | CLASS_CPU,
+	.stress_class = CLASS_OS | CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_getrandom_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS | CLASS_CPU,
+	.stress_class = CLASS_OS | CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without getrandom() support"

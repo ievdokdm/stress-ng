@@ -301,14 +301,14 @@ static int stress_unshare(stress_args_t *args)
 
 stressor_info_t stress_unshare_info = {
 	.stressor = stress_unshare,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_unshare_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without unshare() system call"

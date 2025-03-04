@@ -298,14 +298,14 @@ static int stress_loadavg(stress_args_t *args)
 
 stressor_info_t stress_loadavg_info = {
 	.stressor = stress_loadavg,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };
 #else
 stressor_info_t stress_loadavg_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.unimplemented_reason = "built without pthread support"

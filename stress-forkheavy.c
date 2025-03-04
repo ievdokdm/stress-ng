@@ -329,7 +329,7 @@ static const stress_opt_set_func_t forkheavy_opt_set_funcs[] = {
 
 stressor_info_t stress_forkheavy_info = {
 	.stressor = stress_forkheavy,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = forkheavy_opt_set_funcs,
 	.help = help
 };

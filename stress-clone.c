@@ -654,7 +654,7 @@ static int stress_clone(stress_args_t *args)
 
 stressor_info_t stress_clone_info = {
 	.stressor = stress_clone,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -662,7 +662,7 @@ stressor_info_t stress_clone_info = {
 #else
 stressor_info_t stress_clone_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

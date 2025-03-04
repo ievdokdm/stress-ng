@@ -129,14 +129,14 @@ next:
 stressor_info_t stress_idle_page_info = {
 	.stressor = stress_idle_page,
 	.supported = stress_idle_page_supported,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.help = help
 };
 #else
 stressor_info_t stress_idle_page_info = {
 	.stressor = stress_unimplemented,
 	.supported = stress_idle_page_supported,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.help = help,
 	.unimplemented_reason = "only supported on Linux"
 };

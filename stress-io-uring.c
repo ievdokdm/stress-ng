@@ -1227,7 +1227,7 @@ static int stress_io_uring(stress_args_t *args)
 
 stressor_info_t stress_io_uring_info = {
 	.stressor = stress_io_uring,
-	.class = CLASS_IO | CLASS_OS,
+	.stress_class = CLASS_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -1235,7 +1235,7 @@ stressor_info_t stress_io_uring_info = {
 #else
 stressor_info_t stress_io_uring_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_IO | CLASS_OS,
+	.stress_class = CLASS_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

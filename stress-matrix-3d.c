@@ -1037,7 +1037,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 stressor_info_t stress_matrix_3d_info = {
 	.stressor = stress_matrix_3d,
 	.set_default = stress_matrix_3d_set_default,
-	.class = CLASS_CPU | CLASS_CPU_CACHE | CLASS_MEMORY,
+	.stress_class = CLASS_CPU | CLASS_CPU_CACHE | CLASS_MEMORY,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
@@ -1045,7 +1045,7 @@ stressor_info_t stress_matrix_3d_info = {
 #else
 stressor_info_t stress_matrix_3d_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU | CLASS_CPU_CACHE | CLASS_MEMORY,
+	.stress_class = CLASS_CPU | CLASS_CPU_CACHE | CLASS_MEMORY,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,
 	.unimplemented_reason = "compiler does not support variable length array function arguments"

@@ -1091,7 +1091,7 @@ exit_free_buffer:
 
 stressor_info_t stress_workload_info = {
 	.stressor = stress_workload,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help

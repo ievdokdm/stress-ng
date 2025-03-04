@@ -259,7 +259,7 @@ err:
 
 stressor_info_t stress_sync_file_info = {
 	.stressor = stress_sync_file,
-	.class = CLASS_IO | CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_IO | CLASS_FILESYSTEM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -267,7 +267,7 @@ stressor_info_t stress_sync_file_info = {
 #else
 stressor_info_t stress_sync_file_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_IO | CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_IO | CLASS_FILESYSTEM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

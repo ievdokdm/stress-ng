@@ -206,7 +206,7 @@ static int stress_vm_splice(stress_args_t *args)
 
 stressor_info_t stress_vm_splice_info = {
 	.stressor = stress_vm_splice,
-	.class = CLASS_VM | CLASS_PIPE_IO | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_PIPE_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -214,7 +214,7 @@ stressor_info_t stress_vm_splice_info = {
 #else
 stressor_info_t stress_vm_splice_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_PIPE_IO | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_PIPE_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

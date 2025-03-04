@@ -395,14 +395,14 @@ close_done:
 
 stressor_info_t stress_splice_info = {
 	.stressor = stress_splice,
-	.class = CLASS_PIPE_IO | CLASS_OS,
+	.stress_class = CLASS_PIPE_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };
 #else
 stressor_info_t stress_splice_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_PIPE_IO | CLASS_OS,
+	.stress_class = CLASS_PIPE_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.unimplemented_reason = "built without splice() system call"

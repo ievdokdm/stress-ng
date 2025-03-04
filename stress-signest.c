@@ -351,7 +351,7 @@ finish:
 
 stressor_info_t stress_signest_info = {
 	.stressor = stress_signest,
-	.class = CLASS_SIGNAL | CLASS_OS,
+	.stress_class = CLASS_SIGNAL | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };

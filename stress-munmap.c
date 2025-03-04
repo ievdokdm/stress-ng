@@ -268,7 +268,7 @@ static int stress_munmap(stress_args_t *args)
 
 stressor_info_t stress_munmap_info = {
 	.stressor = stress_munmap,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
@@ -276,7 +276,7 @@ stressor_info_t stress_munmap_info = {
 #else
 stressor_info_t stress_munmap_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
         .help = help,
 	.unimplemented_reason = "only supported on Linux"

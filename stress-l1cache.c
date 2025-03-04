@@ -589,7 +589,7 @@ static int stress_l1cache(stress_args_t *args)
 
 stressor_info_t stress_l1cache_info = {
 	.stressor = stress_l1cache,
-	.class = CLASS_CPU_CACHE,
+	.stress_class = CLASS_CPU_CACHE,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

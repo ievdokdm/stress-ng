@@ -264,14 +264,14 @@ static int stress_handle(stress_args_t *args)
 
 stressor_info_t stress_handle_info = {
 	.stressor = stress_handle,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_handle_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without name_to_handle_at(), open_by_handle_at() or AT_FDCWD"

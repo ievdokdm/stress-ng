@@ -236,7 +236,7 @@ PRAGMA_UNROLL_N(8)
 
 stressor_info_t stress_x86cpuid_info = {
 	.stressor = stress_x86cpuid,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
@@ -244,7 +244,7 @@ stressor_info_t stress_x86cpuid_info = {
 
 stressor_info_t stress_x86cpuid_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without x86 cpuid instruction support"

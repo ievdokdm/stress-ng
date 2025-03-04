@@ -384,14 +384,14 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_nop_info = {
 	.stressor = stress_nop,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };
 #else
 stressor_info_t stress_nop_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.help = help,
 	.unimplemented_reason = "no nop assembler op-code(s) for this architecture"
 };

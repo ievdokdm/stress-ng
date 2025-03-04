@@ -332,7 +332,7 @@ static int stress_mmaphuge(stress_args_t *args)
 
 stressor_info_t stress_mmaphuge_info = {
 	.stressor = stress_mmaphuge,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -342,7 +342,7 @@ stressor_info_t stress_mmaphuge_info = {
 
 stressor_info_t stress_mmaphuge_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

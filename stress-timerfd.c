@@ -426,7 +426,7 @@ free_fds:
 
 stressor_info_t stress_timerfd_info = {
 	.stressor = stress_timerfd,
-	.class = CLASS_INTERRUPT | CLASS_OS,
+	.stress_class = CLASS_INTERRUPT | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
@@ -434,7 +434,7 @@ stressor_info_t stress_timerfd_info = {
 #else
 stressor_info_t stress_timerfd_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_INTERRUPT | CLASS_OS,
+	.stress_class = CLASS_INTERRUPT | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

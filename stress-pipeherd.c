@@ -221,7 +221,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_pipeherd_info = {
 	.stressor = stress_pipeherd,
-	.class = CLASS_PIPE_IO | CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_PIPE_IO | CLASS_MEMORY | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help

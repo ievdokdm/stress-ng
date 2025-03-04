@@ -553,7 +553,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_switch_info = {
 	.stressor = stress_switch,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.set_default = stress_switch_set_default,
 	.verify = VERIFY_ALWAYS,

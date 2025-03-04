@@ -366,7 +366,7 @@ err:
 
 stressor_info_t stress_usersyscall_info = {
 	.stressor = stress_usersyscall,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.supported = stress_supported,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -376,7 +376,7 @@ stressor_info_t stress_usersyscall_info = {
 
 stressor_info_t stress_usersyscall_info = {
         .stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
         .help = help,
 	.unimplemented_reason = "only supported on Linux",

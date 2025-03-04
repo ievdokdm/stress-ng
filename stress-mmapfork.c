@@ -264,14 +264,14 @@ reap:
 
 stressor_info_t stress_mmapfork_info = {
 	.stressor = stress_mmapfork,
-	.class = CLASS_SCHEDULER | CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_mmapfork_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_SCHEDULER | CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without sys/sysinfo_h or sysinfo() system call"

@@ -1027,7 +1027,7 @@ next:
 
 stressor_info_t stress_cache_info = {
 	.stressor = stress_cache,
-	.class = CLASS_CPU_CACHE,
+	.stress_class = CLASS_CPU_CACHE,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };

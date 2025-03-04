@@ -646,7 +646,7 @@ static int stress_gpu(stress_args_t *args)
 
 stressor_info_t stress_gpu_info = {
 	.stressor = stress_gpu,
-	.class = CLASS_GPU,
+	.stress_class = CLASS_GPU,
 	.opt_set_funcs = opt_set_funcs,
 	.supported = stress_gpu_supported,
 	.help = help
@@ -654,7 +654,7 @@ stressor_info_t stress_gpu_info = {
 #else
 stressor_info_t stress_gpu_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_GPU,
+	.stress_class = CLASS_GPU,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.unimplemented_reason = "built without EGL/egl.h, EGL/eglext.h, GLES2/gl2.h or gbm.h"

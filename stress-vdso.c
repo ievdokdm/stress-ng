@@ -565,14 +565,14 @@ static int stress_vdso(stress_args_t *args)
 stressor_info_t stress_vdso_info = {
 	.stressor = stress_vdso,
 	.supported = stress_vdso_supported,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };
 #else
 stressor_info_t stress_vdso_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help,
 	.unimplemented_reason = "built without sys/auxv.h, link.h, getauxval() or AT_SYSINFO_EHDR defined"

@@ -8898,7 +8898,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_syscall_info = {
 	.stressor = stress_syscall,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help
 };

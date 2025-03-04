@@ -261,7 +261,7 @@ static int stress_sem(stress_args_t *args)
 
 stressor_info_t stress_sem_info = {
 	.stressor = stress_sem,
-	.class = CLASS_OS | CLASS_SCHEDULER,
+	.stress_class = CLASS_OS | CLASS_SCHEDULER,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -269,7 +269,7 @@ stressor_info_t stress_sem_info = {
 #else
 stressor_info_t stress_sem_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS | CLASS_SCHEDULER,
+	.stress_class = CLASS_OS | CLASS_SCHEDULER,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

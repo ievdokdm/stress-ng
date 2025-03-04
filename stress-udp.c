@@ -542,7 +542,7 @@ static const stress_opt_set_func_t opt_set_funcs[] = {
 
 stressor_info_t stress_udp_info = {
 	.stressor = stress_udp,
-	.class = CLASS_NETWORK | CLASS_OS,
+	.stress_class = CLASS_NETWORK | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help

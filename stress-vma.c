@@ -619,13 +619,13 @@ static int stress_vma(stress_args_t *args)
 
 stressor_info_t stress_vma_info = {
 	.stressor = stress_vma,
-	.class = CLASS_VM,
+	.stress_class = CLASS_VM,
 	.help = help
 };
 #else
 stressor_info_t stress_vma_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM,
+	.stress_class = CLASS_VM,
 	.help = help,
 	.unimplemented_reason = "built without pthread support"
 };

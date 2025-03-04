@@ -312,7 +312,7 @@ finish:
 
 stressor_info_t stress_readahead_info = {
 	.stressor = stress_readahead,
-	.class = CLASS_IO | CLASS_OS,
+	.stress_class = CLASS_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
@@ -320,7 +320,7 @@ stressor_info_t stress_readahead_info = {
 #else
 stressor_info_t stress_readahead_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_IO | CLASS_OS,
+	.stress_class = CLASS_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,

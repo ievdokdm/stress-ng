@@ -905,14 +905,14 @@ exit_no_sysfs_entries:
 
 stressor_info_t stress_sysfs_info = {
 	.stressor = stress_sysfs,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
 };
 #else
 stressor_info_t stress_sysfs_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,
 	.unimplemented_reason = "not Linux or built without pthread support"

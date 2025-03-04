@@ -350,7 +350,7 @@ static int stress_touch(stress_args_t *args)
 
 stressor_info_t stress_touch_info = {
 	.stressor = stress_touch,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help

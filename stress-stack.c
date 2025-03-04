@@ -323,7 +323,7 @@ static int stress_stack(stress_args_t *args)
 
 stressor_info_t stress_stack_info = {
 	.stressor = stress_stack,
-	.class = CLASS_VM | CLASS_MEMORY,
+	.stress_class = CLASS_VM | CLASS_MEMORY,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help

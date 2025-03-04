@@ -611,7 +611,7 @@ tidy:
 
 stressor_info_t stress_list_info = {
 	.stressor = stress_list,
-	.class = CLASS_CPU_CACHE | CLASS_CPU | CLASS_MEMORY,
+	.stress_class = CLASS_CPU_CACHE | CLASS_CPU | CLASS_MEMORY,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help

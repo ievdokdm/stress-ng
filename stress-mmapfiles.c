@@ -281,7 +281,7 @@ static int stress_mmapfiles(stress_args_t *args)
 
 stressor_info_t stress_mmapfiles_info = {
 	.stressor = stress_mmapfiles,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.opt_set_funcs = opt_set_funcs,
 	.help = help

@@ -213,7 +213,7 @@ dir_out:
 
 stressor_info_t stress_sendfile_info = {
 	.stressor = stress_sendfile,
-	.class = CLASS_PIPE_IO | CLASS_OS,
+	.stress_class = CLASS_PIPE_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -221,7 +221,7 @@ stressor_info_t stress_sendfile_info = {
 #else
 stressor_info_t stress_sendfile_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_PIPE_IO | CLASS_OS,
+	.stress_class = CLASS_PIPE_IO | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

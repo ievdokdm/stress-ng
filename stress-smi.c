@@ -272,7 +272,7 @@ static int stress_smi(stress_args_t *args)
 
 stressor_info_t stress_smi_info = {
 	.stressor = stress_smi,
-	.class = CLASS_CPU | CLASS_PATHOLOGICAL,
+	.stress_class = CLASS_CPU | CLASS_PATHOLOGICAL,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.supported = stress_smi_supported
@@ -280,7 +280,7 @@ stressor_info_t stress_smi_info = {
 #else
 stressor_info_t stress_smi_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU | CLASS_PATHOLOGICAL,
+	.stress_class = CLASS_CPU | CLASS_PATHOLOGICAL,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built for non-x86 target without sys/io.h or ioperm() or out op-code"

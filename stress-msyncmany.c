@@ -155,14 +155,14 @@ static int stress_msyncmany(stress_args_t *args)
 
 stressor_info_t stress_msyncmany_info = {
 	.stressor = stress_msyncmany,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 stressor_info_t stress_msyncmany_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without msync() system call support"

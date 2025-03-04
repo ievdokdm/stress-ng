@@ -350,7 +350,7 @@ static int stress_mremap(stress_args_t *args)
 
 stressor_info_t stress_mremap_info = {
 	.stressor = stress_mremap,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
@@ -358,7 +358,7 @@ stressor_info_t stress_mremap_info = {
 #else
 stressor_info_t stress_mremap_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,

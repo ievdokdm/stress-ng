@@ -475,7 +475,7 @@ finish:
 
 stressor_info_t stress_ramfs_info = {
 	.stressor = stress_ramfs_mount,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.supported = stress_ramfs_supported,
 	.verify = VERIFY_ALWAYS,
@@ -484,7 +484,7 @@ stressor_info_t stress_ramfs_info = {
 #else
 stressor_info_t stress_ramfs_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.supported = stress_ramfs_supported,
 	.verify = VERIFY_ALWAYS,

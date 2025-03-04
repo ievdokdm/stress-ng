@@ -958,7 +958,7 @@ err:
 stressor_info_t stress_exec_info = {
 	.stressor = stress_exec,
 	.supported = stress_exec_supported,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

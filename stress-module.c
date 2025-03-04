@@ -428,7 +428,7 @@ out:
 
 stressor_info_t stress_module_info = {
 	.stressor = stress_module,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.supported = stress_module_supported,
 	.help = help
@@ -437,7 +437,7 @@ stressor_info_t stress_module_info = {
 #else
 stressor_info_t stress_module_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opt_set_funcs = opt_set_funcs,
 	.supported = stress_module_supported,
 	.help = help
