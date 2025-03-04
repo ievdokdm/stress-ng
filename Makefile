@@ -748,13 +748,7 @@ stress-ng: config.h $(OBJS)
 	$(LINK_TOOL) $(OBJS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA) $(CFLAGS) -o $@
 
 stress-eigen-ops.o: config.h stress-eigen-ops.cpp stress-eigen-ops.c
-	if grep -q '^#define HAVE_EIGEN' config.h; then \
-		echo "CXX stress-eigen-ops.cpp";	\
-		g++ -c -o stress-eigen-ops.o stress-eigen-ops.cpp; \
-	else \
-		echo "CC stress-eigen-ops.c";	\
-		gcc -c -o stress-eigen-ops.o stress-eigen-ops.c; \
-	fi
+	gcc -c -o stress-eigen-ops.o stress-eigen-ops.c; \
 
 config.h config:
 	echo "Generating config.."
@@ -769,13 +763,7 @@ makeconfig: config.h
 #
 apparmor-data.o: usr.bin.pulseaudio.eg config.h
 	rm -f apparmor-data.bin
-	if [ -n "$(shell grep '^#define HAVE_APPARMOR' config.h)" ]; then \
-		echo "Generating AppArmor profile from usr.bin.pulseaudio.eg"; \
-		$(APPARMOR_PARSER) -Q usr.bin.pulseaudio.eg  -o apparmor-data.bin >/dev/null 2>&1 ; \
-	else \
-		echo "Generating empty AppArmor profile"; \
-		touch apparmor-data.bin; \
-	fi
+	$(APPARMOR_PARSER) -Q usr.bin.pulseaudio.eg  -o apparmor-data.bin >/dev/null 2>&1 ; \
 	echo "#include <stddef.h>" > apparmor-data.c
 	echo "char g_apparmor_data[]= { " >> apparmor-data.c
 	od -tx1 -An -v < apparmor-data.bin | \
@@ -792,7 +780,7 @@ apparmor-data.o: usr.bin.pulseaudio.eg config.h
 #  extract the PER_* personality enums
 #
 personality.h: config.h
-	g++ $(CFLAGS) core-personality.c | $(GREP) -e "PER_[A-Z0-9]* =.*," | cut -d "=" -f 1 \
+	gcc $(CFLAGS) core-personality.c | $(GREP) -e "PER_[A-Z0-9]* =.*," | cut -d "=" -f 1 \
 	| sed "s/.$$/,/" > personality.h
 	echo "MK personality.h"
 
@@ -803,7 +791,7 @@ stress-personality.c: personality.h
 #  so we can check if these enums exist
 #
 io-uring.h: config.h
-	g++ $(CFLAGS) core-io-uring.c  | $(GREP) IORING_OP | sed 's/,//' | \
+	gcc $(CFLAGS) core-io-uring.c  | $(GREP) IORING_OP | sed 's/,//' | \
 	sed 's/.*\(IORING_OP_.*\)/#define HAVE_\1/' > io-uring.h
 	echo "MK io-uring.h"
 
