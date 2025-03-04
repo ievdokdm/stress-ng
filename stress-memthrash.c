@@ -1016,7 +1016,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_memthrash_info = {
 	.stressor = stress_memthrash,
-	.class = CLASS_MEMORY,
+	.stress_class = CLASS_MEMORY,
 	.opts = opts,
 	.help = help
 };
@@ -1029,7 +1029,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_memthrash_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_MEMORY,
+	.stress_class = CLASS_MEMORY,
 	.opts = opts,
 	.help = help,
 	.unimplemented_reason = "built without pthread support"

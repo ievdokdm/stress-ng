@@ -2989,13 +2989,13 @@ err_dir:
 
 const stressor_info_t stress_sysinval_info = {
 	.stressor = stress_sysinval,
-	.class = CLASS_OS | CLASS_PATHOLOGICAL,
+	.stress_class = CLASS_OS | CLASS_PATHOLOGICAL,
 	.help = help
 };
 #else
 const stressor_info_t stress_sysinval_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS | CLASS_PATHOLOGICAL,
+	.stress_class = CLASS_OS | CLASS_PATHOLOGICAL,
 	.help = help,
 	.unimplemented_reason = "built without syscall.h, syscall() or system is GNU/HURD or OS X"
 };

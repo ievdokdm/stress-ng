@@ -321,7 +321,7 @@ static int stress_rlimit(stress_args_t *args)
 
 const stressor_info_t stress_rlimit_info = {
 	.stressor = stress_rlimit,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };

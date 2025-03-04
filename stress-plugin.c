@@ -404,7 +404,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_plugin_info = {
 	.stressor = stress_plugin,
-	.class = CLASS_CPU | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_OS,
 	.opts = opts,
 	.supported = stress_plugin_supported,
 	.help = help
@@ -428,7 +428,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_plugin_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_OS,
 	.opts = opts,
 	.help = help,
 	.unimplemented_reason = "built without link.h, dlfcn.h or built as a static image"

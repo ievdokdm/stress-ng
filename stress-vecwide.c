@@ -275,14 +275,14 @@ static int stress_vecwide(stress_args_t *args)
 
 const stressor_info_t stress_vecwide_info = {
 	.stressor = stress_vecwide,
-	.class = CLASS_CPU | CLASS_INTEGER | CLASS_COMPUTE | CLASS_VECTOR,
+	.stress_class = CLASS_CPU | CLASS_INTEGER | CLASS_COMPUTE | CLASS_VECTOR,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
 };
 #else
 const stressor_info_t stress_vecwide_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU | CLASS_INTEGER | CLASS_COMPUTE | CLASS_VECTOR,
+	.stress_class = CLASS_CPU | CLASS_INTEGER | CLASS_COMPUTE | CLASS_VECTOR,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,
 	.unimplemented_reason = "built without compiler support for vector data/operations"

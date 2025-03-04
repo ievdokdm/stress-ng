@@ -557,7 +557,7 @@ static int stress_schedmix(stress_args_t *args)
 
 const stressor_info_t stress_schedmix_info = {
 	.stressor = stress_schedmix,
-	.class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -565,7 +565,7 @@ const stressor_info_t stress_schedmix_info = {
 #else
 const stressor_info_t stress_schedmix_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

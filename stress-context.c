@@ -248,14 +248,14 @@ fail:
 
 const stressor_info_t stress_context_info = {
 	.stressor = stress_context,
-	.class = CLASS_MEMORY | CLASS_CPU,
+	.stress_class = CLASS_MEMORY | CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 const stressor_info_t stress_context_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_MEMORY | CLASS_CPU,
+	.stress_class = CLASS_MEMORY | CLASS_CPU,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without ucontext.h"

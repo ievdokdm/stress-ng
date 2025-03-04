@@ -128,7 +128,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_resources_info = {
 	.stressor = stress_resources,
-	.class = CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_MEMORY | CLASS_OS,
 	.opts = opts,
 	.help = help
 };

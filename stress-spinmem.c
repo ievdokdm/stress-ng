@@ -280,7 +280,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_spinmem_info = {
 	.stressor = stress_spinmem,
-	.class = CLASS_CPU | CLASS_MEMORY | CLASS_CPU_CACHE,
+	.stress_class = CLASS_CPU | CLASS_MEMORY | CLASS_CPU_CACHE,
 	.verify = VERIFY_ALWAYS,
 	.opts = opts,
 	.help = help

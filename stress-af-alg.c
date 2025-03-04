@@ -1220,7 +1220,7 @@ const stressor_info_t stress_af_alg_info = {
 	.stressor = stress_af_alg,
 	.init = stress_af_alg_init,
 	.deinit = stress_af_alg_deinit,
-	.class = CLASS_CPU | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
@@ -1229,7 +1229,7 @@ const stressor_info_t stress_af_alg_info = {
 #else
 const stressor_info_t stress_af_alg_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,

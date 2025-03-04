@@ -288,7 +288,7 @@ reap:
 
 const stressor_info_t stress_mmapfork_info = {
 	.stressor = stress_mmapfork,
-	.class = CLASS_SCHEDULER | CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_VM | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -296,7 +296,7 @@ const stressor_info_t stress_mmapfork_info = {
 #else
 const stressor_info_t stress_mmapfork_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_SCHEDULER | CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_VM | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.opts = opts,
 	.help = help,

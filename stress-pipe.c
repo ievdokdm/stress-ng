@@ -719,7 +719,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_pipe_info = {
 	.stressor = stress_pipe,
-	.class = CLASS_PIPE_IO | CLASS_MEMORY | CLASS_OS | CLASS_IPC,
+	.stress_class = CLASS_PIPE_IO | CLASS_MEMORY | CLASS_OS | CLASS_IPC,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

@@ -251,7 +251,7 @@ static int stress_lsearch(stress_args_t *args)
 
 const stressor_info_t stress_lsearch_info = {
 	.stressor = stress_lsearch,
-	.class = CLASS_CPU_CACHE | CLASS_CPU | CLASS_MEMORY | CLASS_SEARCH,
+	.stress_class = CLASS_CPU_CACHE | CLASS_CPU | CLASS_MEMORY | CLASS_SEARCH,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

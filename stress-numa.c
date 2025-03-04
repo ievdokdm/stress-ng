@@ -729,7 +729,7 @@ deinit:
 
 const stressor_info_t stress_numa_info = {
 	.stressor = stress_numa,
-	.class = CLASS_CPU | CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.opts = opts,
 	.help = help
@@ -737,7 +737,7 @@ const stressor_info_t stress_numa_info = {
 #else
 const stressor_info_t stress_numa_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_CPU | CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_CPU | CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.opts = opts,
 	.help = help,

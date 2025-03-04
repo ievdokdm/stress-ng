@@ -308,7 +308,7 @@ static int stress_stack(stress_args_t *args)
 
 const stressor_info_t stress_stack_info = {
 	.stressor = stress_stack,
-	.class = CLASS_VM | CLASS_MEMORY,
+	.stress_class = CLASS_VM | CLASS_MEMORY,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help

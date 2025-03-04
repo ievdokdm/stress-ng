@@ -346,7 +346,7 @@ err:
 }
 const stressor_info_t stress_urandom_info = {
 	.stressor = stress_urandom,
-	.class = CLASS_DEV | CLASS_OS,
+	.stress_class = CLASS_DEV | CLASS_OS,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
 };

@@ -327,7 +327,7 @@ PRAGMA_UNROLL_N(4)
 const stressor_info_t stress_remap_info = {
 	.stressor = stress_remap,
 	.opts = opts,
-	.class = CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
@@ -335,7 +335,7 @@ const stressor_info_t stress_remap_info = {
 const stressor_info_t stress_remap_info = {
 	.stressor = stress_unimplemented,
 	.opts = opts,
-	.class = CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without remap_file_pages() or unsupported for SPARC Linux"

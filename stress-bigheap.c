@@ -319,7 +319,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_bigheap_info = {
 	.stressor = stress_bigheap,
-	.class = CLASS_OS | CLASS_VM,
+	.stress_class = CLASS_OS | CLASS_VM,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

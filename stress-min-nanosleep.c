@@ -469,7 +469,7 @@ const stressor_info_t stress_min_nanosleep_info = {
 	.stressor = stress_min_nanosleep,
 	.init = stress_min_nanosleep_init,
 	.deinit = stress_min_nanosleep_deinit,
-	.class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.opts = opts,
 	.help = help
@@ -477,7 +477,7 @@ const stressor_info_t stress_min_nanosleep_info = {
 #else
 const stressor_info_t stress_min_nanosleep_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_INTERRUPT | CLASS_SCHEDULER | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.opts = opts,

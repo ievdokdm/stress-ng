@@ -427,7 +427,7 @@ tidy:
 
 const stressor_info_t stress_poll_info = {
 	.stressor = stress_poll,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
@@ -435,7 +435,7 @@ const stressor_info_t stress_poll_info = {
 #else
 const stressor_info_t stress_poll_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,

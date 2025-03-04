@@ -744,7 +744,7 @@ err_free_s_pids:
 const stressor_info_t stress_apparmor_info = {
 	.stressor = stress_apparmor,
 	.supported = stress_apparmor_supported,
-	.class = CLASS_OS | CLASS_SECURITY,
+	.stress_class = CLASS_OS | CLASS_SECURITY,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
@@ -761,7 +761,7 @@ static int stress_apparmor_supported(const char *name)
 const stressor_info_t stress_apparmor_info = {
 	.stressor = stress_unimplemented,
 	.supported = stress_apparmor_supported,
-	.class = CLASS_OS | CLASS_SECURITY,
+	.stress_class = CLASS_OS | CLASS_SECURITY,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without sys/apparmor.h"

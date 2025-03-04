@@ -25,38 +25,13 @@ VERSION=0.18.11
 #
 # Determine supported toolchains
 #
-COMPILER = cc
-ifneq ($(shell $(CC) -v 2>&1 | grep version | grep gcc),)
 COMPILER = gcc
-endif
-ifneq ($(shell $(CC) -v 2>&1 | grep version | grep icc),)
-COMPILER = icc
-endif
-ifneq ($(shell $(CC) -v 2>&1 | grep "Portable C Compiler"),)
-COMPILER = pcc
-endif
-ifneq ($(shell $(CC) -v 2>&1 | grep "tcc"),)
-COMPILER = tcc
-endif
-ifneq ($(shell $(CC) -v 2>&1 | grep version | grep clang),)
-COMPILER = clang
-endif
-ifneq ($(shell $(CC) -v 2>&1 | grep oneAPI | grep Compiler),)
-COMPILER = icx
-endif
-ifeq ($(shell echo | $(CC) -E -Wp,-v - 2>&1 | grep musl  > /dev/null && echo 1),1)
-COMPILER = musl-gcc
-override CFLAGS += -DHAVE_CC_MUSL_GCC
-endif
-ifneq ($(shell $(CC) -v 2>&1 | grep scan-build),)
-COMPILER = scan-build
-endif
 
 #
 # check for ALT linux gcc, define HAVE_ALT_LINUX_GCC, see core-shim.c
 # https://github.com/ColinIanKing/stress-ng/issues/452
 #
-ifneq ($(shell $(CC) -v 2>&1 | grep Target | grep "alt-linux"),)
+ifneq ($(shell gcc -v 2>&1 | grep Target | grep "alt-linux"),)
 override CFLAGS += -DHAVE_ALT_LINUX_GCC
 endif
 
@@ -93,7 +68,7 @@ endif
 #
 # Check if compiler supports flag set in $(flag)
 #
-cc_supports_flag = $(shell $(CC) -Werror $(flag) -E -xc /dev/null > /dev/null 2>&1 && echo $(flag))
+cc_supports_flag = $(shell gcc -Werror $(flag) -E -xc /dev/null > /dev/null 2>&1 && echo $(flag))
 
 #
 # Pedantic flags
@@ -126,7 +101,7 @@ flag = -Wformat -fstack-protector-strong -Werror=format-security
 #
 # add -D_FORTIFY_SOURCE=2 if _FORTIFY_SOURCE is not already defined
 #
-ifeq ($(shell echo _FORTIFY_SOURCE | $(CC) $(CFLAGS) -E -xc - | tail -1),_FORTIFY_SOURCE)
+ifeq ($(shell echo _FORTIFY_SOURCE | gcc $(CFLAGS) -E -xc - | tail -1),_FORTIFY_SOURCE)
 flag += -D_FORTIFY_SOURCE=2
 endif
 override CFLAGS += $(cc_supports_flag)
@@ -191,7 +166,7 @@ endif
 #
 # Disable any user defined PREFV setting
 #
-ifneq ($(PRE_V),)
+ifneq (,)
 override undefine PRE_V
 endif
 #
@@ -771,35 +746,33 @@ all: config.h stress-ng
 .o: Makefile
 
 %.o: %.c $(HEADERS) $(HEADERS_GEN)
-	$(PRE_Q)echo "CC $<"
-	$(PRE_V)$(CC) $(CFLAGS) -c -o $@ $<
+	gcc $(CFLAGS) -c -o $@ $<
 
 stress-vnni.o: stress-vnni.c $(HEADERS) $(HEADERS_GEN)
-	$(PRE_Q)echo "CC $<"
-	$(PRE_V)$(CC) $(VNNI_CFLAGS) -c -o $@ $<
+	gcc $(VNNI_CFLAGS) -c -o $@ $<
 
 #
 #  Use CC for linking if eigen is not being used, otherwise use CXX
 #
 stress-ng: config.h $(OBJS)
-	$(PRE_Q)echo "LD $@"
-	$(eval LINK_TOOL := $(shell if [ -n "$(shell grep '^#define HAVE_EIGEN' config.h)" ]; then echo $(CXX); else echo $(CC); fi))
+	echo "LD $@"
+	$(eval LINK_TOOL := $(shell if [ -n "$(shell grep '^#define HAVE_EIGEN' config.h)" ]; then echo g++; else echo gcc; fi))
 	$(eval LDFLAGS_EXTRA := $(shell grep CONFIG_LDFLAGS config | sed 's/CONFIG_LDFLAGS +=//' | tr '\n' ' '))
-	$(PRE_V)$(LINK_TOOL) $(OBJS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA) $(CFLAGS) -o $@
+	$(LINK_TOOL) $(OBJS) -lm $(LDFLAGS) $(LDFLAGS_EXTRA) $(CFLAGS) -o $@
 
 stress-eigen-ops.o: config.h stress-eigen-ops.cpp stress-eigen-ops.c
-	$(PRE_V)if grep -q '^#define HAVE_EIGEN' config.h; then \
+	if grep -q '^#define HAVE_EIGEN' config.h; then \
 		echo "CXX stress-eigen-ops.cpp";	\
-		$(CXX) -c -o stress-eigen-ops.o stress-eigen-ops.cpp; \
+		g++ -c -o stress-eigen-ops.o stress-eigen-ops.cpp; \
 	else \
 		echo "CC stress-eigen-ops.c";	\
-		$(CC) -c -o stress-eigen-ops.o stress-eigen-ops.c; \
+		gcc -c -o stress-eigen-ops.o stress-eigen-ops.c; \
 	fi
 
 config.h config:
-	$(PRE_Q)echo "Generating config.."
-	$(MAKE) CC="$(CC)" CXX="$(CXX)" STATIC=$(STATIC) -f Makefile.config
-	$(PRE_Q)rm -f core-config.c
+	echo "Generating config.."
+	$(MAKE) CC="gcc" CXX="g++" STATIC=$(STATIC) -f Makefile.config
+	rm -f core-config.c
 
 makeconfig: config.h
 
@@ -808,33 +781,33 @@ makeconfig: config.h
 #  parser output
 #
 apparmor-data.o: usr.bin.pulseaudio.eg config.h
-	$(PRE_Q)rm -f apparmor-data.bin
-	$(PRE_V)if [ -n "$(shell grep '^#define HAVE_APPARMOR' config.h)" ]; then \
+	rm -f apparmor-data.bin
+	if [ -n "$(shell grep '^#define HAVE_APPARMOR' config.h)" ]; then \
 		echo "Generating AppArmor profile from usr.bin.pulseaudio.eg"; \
 		$(APPARMOR_PARSER) -Q usr.bin.pulseaudio.eg  -o apparmor-data.bin >/dev/null 2>&1 ; \
 	else \
 		echo "Generating empty AppArmor profile"; \
 		touch apparmor-data.bin; \
 	fi
-	$(PRE_V)echo "#include <stddef.h>" > apparmor-data.c
-	$(PRE_V)echo "char g_apparmor_data[]= { " >> apparmor-data.c
-	$(PRE_V)od -tx1 -An -v < apparmor-data.bin | \
+	echo "#include <stddef.h>" > apparmor-data.c
+	echo "char g_apparmor_data[]= { " >> apparmor-data.c
+	od -tx1 -An -v < apparmor-data.bin | \
 		sed 's/[0-9a-f][0-9a-f]/0x&,/g' | \
 		sed '$$ s/.$$//' >> apparmor-data.c
-	$(PRE_V)echo "};" >> apparmor-data.c
-	$(PRE_V)rm -f apparmor-data.bin
-	$(PRE_V)echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
-	$(PRE_Q)echo "CC apparmor-data.c"
-	$(PRE_V)$(CC) $(CFLAGS) -c apparmor-data.c -o apparmor-data.o
-	$(PRE_V)rm -f apparmor-data.c
+	echo "};" >> apparmor-data.c
+	rm -f apparmor-data.bin
+	echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
+	echo "CC apparmor-data.c"
+	gcc $(CFLAGS) -c apparmor-data.c -o apparmor-data.o
+	rm -f apparmor-data.c
 
 #
 #  extract the PER_* personality enums
 #
 personality.h: config.h
-	$(PRE_V)$(CPP) $(CFLAGS) core-personality.c | $(GREP) -e "PER_[A-Z0-9]* =.*," | cut -d "=" -f 1 \
+	g++ $(CFLAGS) core-personality.c | $(GREP) -e "PER_[A-Z0-9]* =.*," | cut -d "=" -f 1 \
 	| sed "s/.$$/,/" > personality.h
-	$(PRE_Q)echo "MK personality.h"
+	echo "MK personality.h"
 
 stress-personality.c: personality.h
 
@@ -843,33 +816,31 @@ stress-personality.c: personality.h
 #  so we can check if these enums exist
 #
 io-uring.h: config.h
-	$(PRE_V)$(CPP) $(CFLAGS) core-io-uring.c  | $(GREP) IORING_OP | sed 's/,//' | \
+	g++ $(CFLAGS) core-io-uring.c  | $(GREP) IORING_OP | sed 's/,//' | \
 	sed 's/.*\(IORING_OP_.*\)/#define HAVE_\1/' > io-uring.h
-	$(PRE_Q)echo "MK io-uring.h"
+	echo "MK io-uring.h"
 
 stress-io-uring.c: io-uring.h
 
 core-perf.o: core-perf.c core-perf-event.c config.h
-	$(PRE_V)$(CC) $(CFLAGS) -E core-perf-event.c | $(GREP) "PERF_COUNT" | \
+	gcc $(CFLAGS) -E core-perf-event.c | $(GREP) "PERF_COUNT" | \
 	sed 's/,/ /' | sed s/'^ *//' | \
 	awk {'print "#define STRESS_" $$1 " (1)"'} > core-perf-event.h
-	$(PRE_Q)echo CC $<
-	$(PRE_V)$(CC) $(CFLAGS) -c -o $@ $<
+	gcc $(CFLAGS) -c -o $@ $<
 
 core-config.c: config.h
-	$(PRE_V)echo "const char stress_config[] = " > core-config.c
-	$(PRE_V)sed 's/.*/"&\\n"/' config.h >> core-config.c
-	$(PRE_V)echo ";" >> core-config.c
+	echo "const char stress_config[] = " > core-config.c
+	sed 's/.*/"&\\n"/' config.h >> core-config.c
+	echo ";" >> core-config.c
 
 stress-vecmath.o: stress-vecmath.c config.h
-	$(PRE_Q)echo CC $<
-	$(PRE_V)$(CC) $(CFLAGS) -fno-builtin -c -o $@ $<
+	gcc $(CFLAGS) -fno-builtin -c -o $@ $<
 
 #
 #  define STRESS_GIT_COMMIT_ID
 #
 git-commit-id.h:
-	$(PRE_Q)echo "MK $@"
+	echo "MK $@"
 	@if [ -e .git/HEAD -a -e .git/index ]; then \
 		echo "#define STRESS_GIT_COMMIT_ID \"$(shell git rev-parse HEAD)\"" > $@ ; \
 	else \
@@ -879,7 +850,7 @@ git-commit-id.h:
 $(OBJS): stress-ng.h Makefile Makefile.config Makefile.machine
 
 stress-ng.1.gz: stress-ng.1
-	$(PRE_V)gzip -n -c $< > $@
+	gzip -n -c $< > $@
 
 .PHONY: dist
 dist:
@@ -902,24 +873,24 @@ pdf:
 
 .PHONY: cleanconfig
 cleanconfig:
-	$(PRE_V)rm -f config config.h core-config.c
-	$(PRE_V)rm -rf configs
+	rm -f config config.h core-config.c
+	rm -rf configs
 
 .PHONY: cleanobj
 cleanobj:
-	$(PRE_V)rm -f core-config.c
-	$(PRE_V)rm -f io-uring.h
-	$(PRE_V)rm -f git-commit-id.h
-	$(PRE_V)rm -f core-perf-event.h
-	$(PRE_V)rm -f personality.h
-	$(PRE_V)rm -f apparmor-data.bin
-	$(PRE_V)rm -f *.o
+	rm -f core-config.c
+	rm -f io-uring.h
+	rm -f git-commit-id.h
+	rm -f core-perf-event.h
+	rm -f personality.h
+	rm -f apparmor-data.bin
+	rm -f *.o
 
 .PHONY: clean
 clean: cleanconfig cleanobj
-	$(PRE_V)rm -f stress-ng $(OBJS) stress-ng.1.gz stress-ng.pdf
-	$(PRE_V)rm -f stress-ng-$(VERSION).tar.xz
-	$(PRE_V)rm -f tags
+	rm -f stress-ng $(OBJS) stress-ng.1.gz stress-ng.pdf
+	rm -f stress-ng-$(VERSION).tar.xz
+	rm -f tags
 
 .PHONY: fast-test-all
 fast-test-all: all

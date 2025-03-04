@@ -307,7 +307,7 @@ err:
 
 const stressor_info_t stress_msync_info = {
 	.stressor = stress_msync,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -315,7 +315,7 @@ const stressor_info_t stress_msync_info = {
 #else
 const stressor_info_t stress_msync_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

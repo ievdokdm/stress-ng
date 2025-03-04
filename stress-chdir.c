@@ -290,7 +290,7 @@ err:
 
 const stressor_info_t stress_chdir_info = {
 	.stressor = stress_chdir,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help

@@ -1148,7 +1148,7 @@ const stressor_info_t stress_cachehammer_info = {
 	.stressor = stress_cachehammer,
 	.init = stress_cachehammer_init,
 	.deinit = stress_cachehammer_deinit,
-	.class = CLASS_CPU_CACHE,
+	.stress_class = CLASS_CPU_CACHE,
 	.verify = VERIFY_NONE,
 	.help = help
 };

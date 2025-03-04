@@ -1212,7 +1212,7 @@ close_all:
 
 const stressor_info_t stress_open_info = {
 	.stressor = stress_open,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.opts = opts,
 	.help = help
 };

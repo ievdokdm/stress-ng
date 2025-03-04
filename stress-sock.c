@@ -1442,7 +1442,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_sock_info = {
 	.stressor = stress_sock,
-	.class = CLASS_NETWORK | CLASS_OS | CLASS_IPC,
+	.stress_class = CLASS_NETWORK | CLASS_OS | CLASS_IPC,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help

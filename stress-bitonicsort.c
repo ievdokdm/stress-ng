@@ -266,7 +266,7 @@ tidy:
 
 const stressor_info_t stress_bitonicsort_info = {
 	.stressor = stress_bitonicsort,
-	.class = CLASS_CPU_CACHE | CLASS_CPU | CLASS_MEMORY | CLASS_SORT,
+	.stress_class = CLASS_CPU_CACHE | CLASS_CPU | CLASS_MEMORY | CLASS_SORT,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

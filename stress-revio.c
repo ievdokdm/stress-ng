@@ -464,7 +464,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_revio_info = {
 	.stressor = stress_revio,
-	.class = CLASS_IO | CLASS_OS,
+	.stress_class = CLASS_IO | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help

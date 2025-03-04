@@ -335,7 +335,7 @@ static int stress_syncload(stress_args_t *args)
 
 const stressor_info_t stress_syncload_info = {
 	.stressor = stress_syncload,
-	.class = CLASS_CPU,
+	.stress_class = CLASS_CPU,
 	.opts = opts,
 	.init = stress_syncload_init,
 	.help = help

@@ -313,7 +313,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_hyperbolic_info = {
 	.stressor = stress_hyperbolic,
-	.class = CLASS_CPU | CLASS_FP | CLASS_COMPUTE,
+	.stress_class = CLASS_CPU | CLASS_FP | CLASS_COMPUTE,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help

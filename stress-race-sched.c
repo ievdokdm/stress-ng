@@ -455,7 +455,7 @@ static int stress_race_sched(stress_args_t *args)
 
 const stressor_info_t stress_race_sched_info = {
 	.stressor = stress_race_sched,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -465,7 +465,7 @@ const stressor_info_t stress_race_sched_info = {
 
 const stressor_info_t stress_race_sched_info = {
         .stressor = stress_unimplemented,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opts = opts,
 	.help = help,
 	.verify = VERIFY_ALWAYS,

@@ -3209,7 +3209,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_cpu_info = {
 	.stressor = stress_cpu,
-	.class = CLASS_CPU | CLASS_COMPUTE,
+	.stress_class = CLASS_CPU | CLASS_COMPUTE,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

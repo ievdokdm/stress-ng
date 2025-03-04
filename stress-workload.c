@@ -1044,7 +1044,7 @@ exit_free_buffer:
 
 const stressor_info_t stress_workload_info = {
 	.stressor = stress_workload,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help

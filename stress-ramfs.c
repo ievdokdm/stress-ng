@@ -471,7 +471,7 @@ finish:
 
 const stressor_info_t stress_ramfs_info = {
 	.stressor = stress_ramfs_mount,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opts = opts,
 	.supported = stress_ramfs_supported,
 	.verify = VERIFY_ALWAYS,
@@ -480,7 +480,7 @@ const stressor_info_t stress_ramfs_info = {
 #else
 const stressor_info_t stress_ramfs_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opts = opts,
 	.supported = stress_ramfs_supported,
 	.verify = VERIFY_ALWAYS,

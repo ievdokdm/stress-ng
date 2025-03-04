@@ -294,7 +294,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_forkheavy_info = {
 	.stressor = stress_forkheavy,
-	.class = CLASS_SCHEDULER | CLASS_OS,
+	.stress_class = CLASS_SCHEDULER | CLASS_OS,
 	.opts = opts,
 	.help = help
 };

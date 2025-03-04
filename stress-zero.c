@@ -285,7 +285,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_zero_info = {
 	.stressor = stress_zero,
-	.class = CLASS_DEV | CLASS_MEMORY | CLASS_OS,
+	.stress_class = CLASS_DEV | CLASS_MEMORY | CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.opts = opts,
 	.help = help

@@ -312,7 +312,7 @@ static int stress_pagemove(stress_args_t *args)
 
 const stressor_info_t stress_pagemove_info = {
 	.stressor = stress_pagemove,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -320,7 +320,7 @@ const stressor_info_t stress_pagemove_info = {
 #else
 const stressor_info_t stress_pagemove_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

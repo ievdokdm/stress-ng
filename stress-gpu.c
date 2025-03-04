@@ -609,7 +609,7 @@ static int stress_gpu(stress_args_t *args)
 
 const stressor_info_t stress_gpu_info = {
 	.stressor = stress_gpu,
-	.class = CLASS_GPU,
+	.stress_class = CLASS_GPU,
 	.opts = opts,
 	.supported = stress_gpu_supported,
 	.help = help
@@ -617,7 +617,7 @@ const stressor_info_t stress_gpu_info = {
 #else
 const stressor_info_t stress_gpu_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_GPU,
+	.stress_class = CLASS_GPU,
 	.opts = opts,
 	.help = help,
 	.unimplemented_reason = "built without EGL/egl.h, EGL/eglext.h, GLES2/gl2.h or gbm.h"

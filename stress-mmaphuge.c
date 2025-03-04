@@ -355,7 +355,7 @@ static int stress_mmaphuge(stress_args_t *args)
 
 const stressor_info_t stress_mmaphuge_info = {
 	.stressor = stress_mmaphuge,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -365,7 +365,7 @@ const stressor_info_t stress_mmaphuge_info = {
 
 const stressor_info_t stress_mmaphuge_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_OS,
+	.stress_class = CLASS_VM | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

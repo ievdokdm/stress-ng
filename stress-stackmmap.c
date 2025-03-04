@@ -304,14 +304,14 @@ tidy_dir:
 
 const stressor_info_t stress_stackmmap_info = {
 	.stressor = stress_stackmmap,
-	.class = CLASS_VM | CLASS_MEMORY,
+	.stress_class = CLASS_VM | CLASS_MEMORY,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 const stressor_info_t stress_stackmmap_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_VM | CLASS_MEMORY,
+	.stress_class = CLASS_VM | CLASS_MEMORY,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without ucontext.h or swapcontext()"

@@ -97,7 +97,7 @@ typedef struct stress_signal_map {
 
 /* Stress test classes */
 typedef struct {
-	const stress_class_t class;	/* Class type bit mask */
+	const stress_class_t stress_class;	/* Class type bit mask */
 	const char *name;		/* Name of class */
 } stress_class_info_t;
 
@@ -431,7 +431,7 @@ static uint32_t PURE stress_get_class_id(const char *const str)
 
 	for (i = 0; i < SIZEOF_ARRAY(stress_classes); i++) {
 		if (!strcmp(stress_classes[i].name, str))
-			return stress_classes[i].class;
+			return stress_classes[i].stress_class;
 	}
 	return 0;
 }
@@ -440,12 +440,12 @@ static uint32_t PURE stress_get_class_id(const char *const str)
  *  stress_get_class()
  *	parse for allowed class types, return bit mask of types, 0 if error
  */
-static int stress_get_class(char *const class_str, uint32_t *class)
+static int stress_get_class(char *const class_str, uint32_t *stress_class)
 {
 	char *str, *token;
 	int ret = 0;
 
-	*class = 0;
+	*stress_class = 0;
 	for (str = class_str; (token = strtok(str, ",")) != NULL; str = NULL) {
 		uint32_t cl = stress_get_class_id(token);
 
@@ -463,7 +463,7 @@ static int stress_get_class(char *const class_str, uint32_t *class)
 					(void)printf("class '%s' stressors:",
 						token);
 					for (j = 0; j < SIZEOF_ARRAY(stressors); j++) {
-						if (stressors[j].info->class & cl)
+						if (stressors[j].info->stress_class & cl)
 							(void)printf(" %s", stressors[j].name);
 					}
 					(void)printf("\n");
@@ -477,7 +477,7 @@ static int stress_get_class(char *const class_str, uint32_t *class)
 			(void)fprintf(stderr, "\n\n");
 			return -1;
 		}
-		*class |= cl;
+		*stress_class |= cl;
 	}
 	return ret;
 }
@@ -3051,7 +3051,7 @@ static inline void stress_exclude_pathological(void)
 		while (ss) {
 			stress_stressor_t *next = ss->next;
 
-			if ((!ss->ignore.run) && (ss->stressor->info->class & CLASS_PATHOLOGICAL)) {
+			if ((!ss->ignore.run) && (ss->stressor->info->stress_class & CLASS_PATHOLOGICAL)) {
 				if (ss->num_instances > 0) {
 					const char* name = ss->stressor->name;
 
@@ -3199,18 +3199,18 @@ static void stress_enable_all_stressors(const int32_t instances)
  *  stress_enable_classes()
  *	enable stressors based on class
  */
-static void stress_enable_classes(const uint32_t class)
+static void stress_enable_classes(const uint32_t stress_class)
 {
 	size_t i;
 
-	if (!class)
+	if (!stress_class)
 		return;
 
 	/* This indicates some stressors are set */
 	g_opt_flags |= OPT_FLAGS_SET;
 
 	for (i = 0; i < SIZEOF_ARRAY(stressors); i++) {
-		if (stressors[i].info->class & class) {
+		if (stressors[i].info->stress_class & stress_class) {
 			stress_stressor_t *ss = stress_find_proc_info(&stressors[i]);
 
 			if (g_opt_flags & OPT_FLAGS_SEQUENTIAL)
@@ -3569,14 +3569,14 @@ static void stress_set_default_timeout(const uint64_t timeout)
  *  stress_setup_sequential()
  *	setup for sequential --seq mode stressors
  */
-static void stress_setup_sequential(const uint32_t class, const int32_t instances)
+static void stress_setup_sequential(const uint32_t stress_class, const int32_t instances)
 {
 	stress_stressor_t *ss;
 
 	stress_set_default_timeout(60);
 
 	for (ss = stressors_head; ss; ss = ss->next) {
-		if (ss->stressor->info->class & class)
+		if (ss->stressor->info->stress_class & stress_class)
 			ss->num_instances = instances;
 		if (!ss->ignore.run)
 			stress_alloc_proc_resources(&ss->stats, ss->num_instances);
@@ -3587,14 +3587,14 @@ static void stress_setup_sequential(const uint32_t class, const int32_t instance
  *  stress_setup_parallel()
  *	setup for parallel mode stressors
  */
-static void stress_setup_parallel(const uint32_t class, const int32_t instances)
+static void stress_setup_parallel(const uint32_t stress_class, const int32_t instances)
 {
 	stress_stressor_t *ss;
 
 	stress_set_default_timeout(DEFAULT_TIMEOUT);
 
 	for (ss = stressors_head; ss; ss = ss->next) {
-		if (ss->stressor->info->class & class)
+		if (ss->stressor->info->stress_class & stress_class)
 			ss->num_instances = instances;
 		if (ss->ignore.run)
 			continue;
@@ -3877,7 +3877,7 @@ int main(int argc, char **argv, char **envp)
 	int32_t ionice_class = UNDEFINED;	/* ionice class */
 	int32_t ionice_level = UNDEFINED;	/* ionice level */
 	size_t i;
-	uint32_t class = 0;
+	uint32_t stress_class = 0;
 	const uint32_t cpus_online = (uint32_t)stress_get_processors_online();
 	const uint32_t cpus_configured = (uint32_t)stress_get_processors_configured();
 	int ret;
@@ -3978,9 +3978,9 @@ int main(int argc, char **argv, char **envp)
 		ret = EXIT_FAILURE;
 		goto exit_stressors_free;
 	}
-	(void)stress_get_setting("class", &class);
+	(void)stress_get_setting("class", &stress_class);
 
-	if (class &&
+	if (stress_class &&
 	    !(g_opt_flags & (OPT_FLAGS_SEQUENTIAL | OPT_FLAGS_ALL | OPT_FLAGS_PERMUTE))) {
 		(void)fprintf(stderr, "class option is only used with "
 			"--sequential, --all or --permute options\n");
@@ -4102,11 +4102,11 @@ int main(int argc, char **argv, char **envp)
 	 *  Setup stressor proc info
 	 */
 	if (g_opt_flags & OPT_FLAGS_SEQUENTIAL) {
-		stress_setup_sequential(class, g_opt_sequential);
+		stress_setup_sequential(stress_class, g_opt_sequential);
 	} else if (g_opt_flags & OPT_FLAGS_PERMUTE) {
-		stress_setup_sequential(class, g_opt_permute);
+		stress_setup_sequential(stress_class, g_opt_permute);
 	} else {
-		stress_setup_parallel(class, g_opt_parallel);
+		stress_setup_parallel(stress_class, g_opt_parallel);
 	}
 	/*
 	 *  Seq/parallel modes may have added in

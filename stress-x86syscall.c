@@ -523,7 +523,7 @@ static int stress_x86syscall(stress_args_t *args)
 
 const stressor_info_t stress_x86syscall_info = {
 	.stressor = stress_x86syscall,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.supported = stress_x86syscall_supported,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
@@ -532,7 +532,7 @@ const stressor_info_t stress_x86syscall_info = {
 #else
 const stressor_info_t stress_x86syscall_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.opts = opts,
 	.help = help,
 	.verify = VERIFY_ALWAYS,

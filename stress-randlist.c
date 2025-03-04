@@ -283,7 +283,7 @@ static const stress_opt_t opts[] = {
 
 const stressor_info_t stress_randlist_info = {
 	.stressor = stress_randlist,
-	.class = CLASS_MEMORY,
+	.stress_class = CLASS_MEMORY,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help

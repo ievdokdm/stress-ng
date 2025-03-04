@@ -329,7 +329,7 @@ static int stress_fallocate(stress_args_t *args)
 
 const stressor_info_t stress_fallocate_info = {
 	.stressor = stress_fallocate,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help
@@ -337,7 +337,7 @@ const stressor_info_t stress_fallocate_info = {
 #else
 const stressor_info_t stress_fallocate_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_FILESYSTEM | CLASS_OS,
+	.stress_class = CLASS_FILESYSTEM | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_OPTIONAL,
 	.help = help,

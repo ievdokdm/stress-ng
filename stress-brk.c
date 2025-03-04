@@ -289,7 +289,7 @@ static int stress_brk(stress_args_t *args)
 const stressor_info_t stress_brk_info = {
 	.stressor = stress_brk,
 	.supported = stress_brk_supported,
-	.class = CLASS_OS | CLASS_VM,
+	.stress_class = CLASS_OS | CLASS_VM,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help

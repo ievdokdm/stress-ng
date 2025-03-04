@@ -468,7 +468,7 @@ finish:
 
 const stressor_info_t stress_dccp_info = {
 	.stressor = stress_dccp,
-	.class = CLASS_NETWORK | CLASS_OS,
+	.stress_class = CLASS_NETWORK | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -476,7 +476,7 @@ const stressor_info_t stress_dccp_info = {
 #else
 const stressor_info_t stress_dccp_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_NETWORK | CLASS_OS,
+	.stress_class = CLASS_NETWORK | CLASS_OS,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

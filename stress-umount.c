@@ -320,7 +320,7 @@ reap:
 
 const stressor_info_t stress_umount_info = {
 	.stressor = stress_umount,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.supported = stress_umount_supported,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -328,7 +328,7 @@ const stressor_info_t stress_umount_info = {
 #else
 const stressor_info_t stress_umount_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.supported = stress_umount_supported,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

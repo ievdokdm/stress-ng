@@ -608,14 +608,14 @@ static int stress_mcontend(stress_args_t *args)
 
 const stressor_info_t stress_mcontend_info = {
 	.stressor = stress_mcontend,
-	.class = CLASS_MEMORY,
+	.stress_class = CLASS_MEMORY,
 	.opts = opts,
 	.help = help
 };
 #else
 const stressor_info_t stress_mcontend_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_MEMORY,
+	.stress_class = CLASS_MEMORY,
 	.opts = opts,
 	.help = help,
 	.unimplemented_reason = "built without pthread support"

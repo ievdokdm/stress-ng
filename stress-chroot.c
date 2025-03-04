@@ -511,7 +511,7 @@ tidy_ret:
 const stressor_info_t stress_chroot_info = {
 	.stressor = stress_chroot,
 	.supported = stress_chroot_supported,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
@@ -530,7 +530,7 @@ static int stress_chroot_supported(const char *name)
 const stressor_info_t stress_chroot_info = {
 	.stressor = stress_unimplemented,
 	.supported = stress_chroot_supported,
-	.class = CLASS_OS,
+	.stress_class = CLASS_OS,
 	.help = help,
 	.unimplemented_reason = "built without chroot() support"
 };

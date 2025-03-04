@@ -584,7 +584,7 @@ static int stress_memfd(stress_args_t *args)
 
 const stressor_info_t stress_memfd_info = {
 	.stressor = stress_memfd,
-	.class = CLASS_OS | CLASS_MEMORY,
+	.stress_class = CLASS_OS | CLASS_MEMORY,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help
@@ -592,7 +592,7 @@ const stressor_info_t stress_memfd_info = {
 #else
 const stressor_info_t stress_memfd_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_OS | CLASS_MEMORY,
+	.stress_class = CLASS_OS | CLASS_MEMORY,
 	.opts = opts,
 	.verify = VERIFY_ALWAYS,
 	.help = help,

@@ -269,14 +269,14 @@ static int stress_netdev(stress_args_t *args)
 
 const stressor_info_t stress_netdev_info = {
 	.stressor = stress_netdev,
-	.class = CLASS_NETWORK,
+	.stress_class = CLASS_NETWORK,
 	.verify = VERIFY_ALWAYS,
 	.help = help
 };
 #else
 const stressor_info_t stress_netdev_info = {
 	.stressor = stress_unimplemented,
-	.class = CLASS_NETWORK,
+	.stress_class = CLASS_NETWORK,
 	.verify = VERIFY_ALWAYS,
 	.help = help,
 	.unimplemented_reason = "built without linux/sockios.h, net/if.h, struct ifconf or ioctl() SIOCGIFCONF command support"
