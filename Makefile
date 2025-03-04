@@ -844,7 +844,7 @@ dist:
 	cp -rp Makefile Makefile.config Makefile.machine $(CORE_SRC) \
 		$(STRESS_SRC) $(HEADERS) stress-ng.1 COPYING syscalls.txt \
 		mascot README.md Dockerfile README.Android test \
-		presentations .github TODO core-perf-event.c \
+		presentations TODO core-perf-event.c \
 		usr.bin.pulseaudio.eg stress-eigen-ops.c \
 		stress-eigen-ops.cpp core-personality.c bash-completion \
 		example-jobs .travis.yml kernel-coverage.sh \
