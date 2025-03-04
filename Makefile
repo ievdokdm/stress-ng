@@ -157,19 +157,6 @@ override CFLAGS += -DCOVERITY
 endif
 
 #
-# Building in github?
-#
-ifneq ($(GITHUB_RUN_ATTEMPT),)
-override VERBOSE=1
-endif
-
-#
-# Disable any user defined PREFV setting
-#
-ifneq (,)
-override undefine PRE_V
-endif
-#
 # Verbosity prefixes
 #
 ifeq ($(VERBOSE),)
@@ -841,11 +828,9 @@ stress-vecmath.o: stress-vecmath.c config.h
 #
 git-commit-id.h:
 	echo "MK $@"
-	@if [ -e .git/HEAD -a -e .git/index ]; then \
-		echo "#define STRESS_GIT_COMMIT_ID \"$(shell git rev-parse HEAD)\"" > $@ ; \
-	else \
-		echo "#define STRESS_GIT_COMMIT_ID \"\"" > $@ ; \
-	fi
+
+		echo "#define STRESS_GIT_COMMIT_ID \"e9dbf1b2d4642dae5fb36b6b4dafd8e33f699330\"" > $@ ; \
+
 
 $(OBJS): stress-ng.h Makefile Makefile.config Makefile.machine
 
