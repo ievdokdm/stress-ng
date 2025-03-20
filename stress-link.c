@@ -46,7 +46,11 @@ static const stress_help_t symlink_help[] = {
 static const stress_opt_t opts[] = {
 	{ OPT_link_sync,    "link-sync",    TYPE_ID_BOOL, 0, 1, NULL },
 	{ OPT_symlink_sync, "symlink-sync", TYPE_ID_BOOL, 0, 1, NULL },
+<<<<<<< HEAD
 	END_OPT
+=======
+	END_OPT,
+>>>>>>> 6a09b1689 (fix AddressSanitizer: global-buffer-overflow error)
 };
 
 /*

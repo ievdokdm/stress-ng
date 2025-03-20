@@ -56,7 +56,11 @@ static const stress_opt_t opts[] = {
 	{ OPT_memfd_mlock,   "memfd-mlock",   TYPE_ID_BOOL, 0, 1, NULL },
 	{ OPT_memfd_numa,    "memfd-numa",    TYPE_ID_BOOL, 0, 1, NULL },
 	{ OPT_memfd_zap_pte, "memfd-zap-pte", TYPE_ID_BOOL, 0, 1, NULL },
+<<<<<<< HEAD
 	END_OPT
+=======
+	END_OPT,
+>>>>>>> 6a09b1689 (fix AddressSanitizer: global-buffer-overflow error)
 };
 
 #if defined(HAVE_MEMFD_CREATE)
